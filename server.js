@@ -13,7 +13,7 @@ var io = require('socket.io')(http);
 // we wont need this anymore because we are using mySQL not mongoDB
 ////////////////////////////////////  
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://admin1:admin3141@ds057944.mongolab.com:57944/chess');
+mongoose.connect('mongodb://admin1:password314@ds137110.mlab.com:37110/himalaya');
 
 var db = mongoose.connection;
 
@@ -73,20 +73,39 @@ var messages = mongoose.model('message', messageSchema);
   socket.on('button clicked', function(msg) {
 
     io.emit('button was clicked', msg);
+//
+// itemID: String,
+//  description: String,
+//  URL: String,
+//  name: String,
+//     numberOfRatings: number,
+//  rating: number,
+//  dateAdded:
+   
 
-      var message = require('./models/message.js');
-      var a = new message({
-          name: msg.first + ' ' + msg.last,
-          message:msg.message
+
+
+
+      var item = require('./models/item.js');
+      var a = new item({
+          itemID: msg.itemID,
+          description: msg.description,
+          URL: msg.URL,
+          name: msg.name,
+          numberOfRatings: msg.numberOfRatings,
+          categoryID: msg.categoryID,
+          rating: msg.rating
+          
       })
+      console.log(a);
 
       a.save(function(error){
-        if (error){
-            console.log(':(');
-          }
-          else{
-            console.log(':)');
-          }
+        // if (error){
+        //     console.log('item was successfully added');
+        //   }
+        //   else{
+        //     console.log('item add failed');
+        //   }
       })
   });
 });

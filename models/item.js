@@ -2,16 +2,18 @@
 
 var mongoose = require('mongoose');
 
-var messageSchema = mongoose.Schema({
-	itemID: String,
+var itemSchema = mongoose.Schema({
+	itemID: Number,
 	description: String,
 	URL: String,
 	name: String,
-    numberOfRatings: number,
-	rating: number,
+    numberOfRatings: Number,
+	rating: Number,
+	categoryID: Number,
 	dateAdded: { type: Date, default: Date.now }
+
 });
 
-var messages = mongoose.model('message', messageSchema);
+var items = mongoose.model('item', itemSchema);
 
-module.exports = messages;
+module.exports = items;
