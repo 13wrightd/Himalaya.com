@@ -29,6 +29,10 @@ $(document).ready(function(){
 		socket.emit('button clicked', msg);
 	});
 
+	$('#refreshButton').click(function(){
+		socket.emit('get items');
+	});
+
 	// $('#messageField').keypress(function(event){
 	// 	var msg=
 	// 	{
@@ -43,8 +47,24 @@ $(document).ready(function(){
 	// });
 
 	socket.on('button was clicked', function(msg){
-		console.log(msg.first+ ' '+ msg.last+ ' clicked, message received');
-		$('#chat').append('<li>'+msg.first+ " " + msg.last+ ": " +msg.message+'</li>');
+		console.log('successful add');
+		//$('#chat').append('<li>'+msg.first+ " " + msg.last+ ": " +msg.message+'</li>');
+	});
+
+
+	socket.on('item list', function(msg){
+		console.log(msg);
+		$('#itemList').empty();
+		for (var key in msg) {
+		if (msg.hasOwnProperty(key)) {
+			//$('#itemList').append('<li>'+msg[key].name+'</li>');
+		$('#itemList').append('<li>'+   '<img    style="width:64px;height:64px;"        src="' + msg[key].URL + '" /> '  +msg[key].name+'</li>');
+
+			
+			console.log(msg[key]);
+		}
+}
+		//$('#chat').append('<li>'+msg.first+ " " + msg.last+ ": " +msg.message+'</li>');
 	});
 });
 

@@ -42,7 +42,7 @@ app.get('/images/*', function (req, res) {
 
 
 
-
+var item = require('./models/item.js');
 
 
 io.on('connection', function(socket) {
@@ -69,6 +69,18 @@ var messages = mongoose.model('message', messageSchema);
   socket.on('disconnect', function() {
     console.log('someone left');
   });
+  socket.on('get items', function() {
+    
+    item.find({} ,function (err, doc){
+        if(err){
+          console.log("error");
+        }
+        else{
+          io.emit('item list', doc);
+        }
+        
+    });
+  });
 
   socket.on('button clicked', function(msg) {
 
@@ -86,7 +98,7 @@ var messages = mongoose.model('message', messageSchema);
 
 
 
-      var item = require('./models/item.js');
+      
       var a = new item({
           itemID: msg.itemID,
           description: msg.description,
