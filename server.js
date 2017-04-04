@@ -5,6 +5,10 @@ var http = require('http').Server(app);
 app.set('port', process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 3000);
 //app.set('ip', process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1");
 
+// mongolabs (to look at database)
+// username: cmpsc431wTeam2
+// password: password314
+
 
 // 1
 var io = require('socket.io')(http);
@@ -30,6 +34,9 @@ app.get('/', function (req, res) {
   console.log('someone loaded homepage');
 });
 app.get('/js/*', function (req, res) {
+  res.sendFile(__dirname+ req.path);
+});
+app.get('/css/*', function (req, res) {
   res.sendFile(__dirname+ req.path);
 });
 
@@ -121,6 +128,8 @@ var messages = mongoose.model('message', messageSchema);
       })
   });
 });
+
+
 
 
 var server = http.listen(app.get('port') , function () {

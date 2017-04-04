@@ -58,7 +58,7 @@ $(document).ready(function(){
 		for (var key in msg) {
 		if (msg.hasOwnProperty(key)) {
 			//$('#itemList').append('<li>'+msg[key].name+'</li>');
-		$('#itemList').append('<li>'+   '<img    style="width:64px;height:64px;"        src="' + msg[key].URL + '" /> '  +msg[key].name+'</li>');
+		$('#itemList').append("<li class='valign-wrapper'>"+   "<img class='valign'"+'   style="width:64px;height:64px;"        src="' + msg[key].URL + '" /> '  +msg[key].name+'</li>');
 
 			
 			console.log(msg[key]);
