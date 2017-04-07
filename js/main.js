@@ -1,5 +1,18 @@
 var socket = io();
 
+var app = angular.module('myApp', []);
+
+app.controller('myCtrl', function($scope) {
+	    $scope.searchtext= "";
+
+	});
+$(document).ready(function(){ //angular
+
+	
+	
+
+});
+
 $(document).ready(function(){
 	console.log('document ready');
 
