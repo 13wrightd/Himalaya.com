@@ -13,7 +13,7 @@ body {
 
 h3, p{
 	/*padding-left:80px;*/
-	padding-right: 500px;
+	padding-right: 400px;
 }
 
 h1, img{
@@ -22,7 +22,15 @@ h1, img{
 
 .absolute {
     position: fixed;
-    top: 100px;
+    top: 50px;
     right: 100px;
 }
 
+form {
+	padding-left: 70px;
+}
+textarea {
+	resize: none;
+	width: 550px;
+	height: 150px;
+}
