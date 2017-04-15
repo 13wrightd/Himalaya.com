@@ -1,0 +1,28 @@
+
+
+body {
+	padding-top: 10px;
+  	padding-bottom: 20px;
+  	background-color: rgb(204,222,249) !important;
+}
+
+
+.jumbotron {
+	background-image: url("/images/HimalayanMountains.jpg")
+}
+
+h3, p{
+	/*padding-left:80px;*/
+	padding-right: 500px;
+}
+
+h1, img{
+	padding-left: 70px;
+}
+
+.absolute {
+    position: fixed;
+    top: 100px;
+    right: 100px;
+}
+
