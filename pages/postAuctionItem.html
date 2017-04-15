@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- stylesheets here -->
+    <link href="../css/signUp.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+       <script>
+      function countChar(val) {
+        var len = val.value.length;
+        if (len >= 500) {
+          val.value = val.value.substring(0, 500);
+        } else {
+          $('#charNum').text(500 - len);
+        }
+      };
+    </script>
+
+  </head>
+  <body>
+  	<div class="container">
+            <form class="form-horizontal" role="form">
+                <h2>Post an Item for Auction</h2>
+                <div class="form-group">
+                    <label for="itemName" class="col-sm-3 control-label">Name of Item</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="itemName" placeholder="Item Name" class="form-control" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="itemDescription" class="col-sm-3 control-label">Item Description</label>
+                    <div id="charNum" class="col-sm-9">
+                        <textarea class="form-control" id="exampleTextarea" rows="6" onkeyup="countChar(this)" placeholder="no more than 500 characters"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="reservePrice" class="col-sm-3 control-label">Reserve Price of Item</label>
+                    <div class="col-sm-9">
+                        <input type="number" id="reservePrice" placeholder="Enter reserve price" class="form-control" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="itemPicture" class="col-sm-3 control-label">Upload Item Picture</label>
+                    <div class="col-sm-9">
+                        <input type="url" id="itemPicture" placeholder="Enter item picture url" class="form-control" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="itemCategory" class="col-sm-3 control-label">Choose Item Category</label>
+                    <div class="col-sm-9">
+                        <select id="itemCategory" class="form-control">
+                            <option></option>
+                            <optgroup label="Apparell">
+                                <optgroup label="-Men's">
+                                    <option>Formal</option>
+                                    <option>Casual</option>
+                                    <option>Sport</option>
+                                <optgroup label="-Women's">
+                                    <option>Formal</option>
+                                    <option>Casual</option>
+                                    <option>Sport</option>
+                            <optgroup label="Electronics">
+                                <optgroup label="-Compters">
+                                    <option>Desktop</option>
+                                    <option>Laptops</option>
+                                <optgroup label="-Media">
+                                    <option>Camera</option>
+                                    <option>Camcorder</option>
+                                <optgroup label="-TV & Accessories">
+                                    <option>Televisions</option>
+                                    <option>Accessories</option>
+                            <optgroup label="Sports">
+                                <optgroup label="-Baseball">
+                                    <option>Bats</option>
+                                    <option>Baseballs</option>
+                                    <option>Mits</option>
+                                    <option>Other Equipment</option>
+                                <optgroup label="-Golf">
+                                    <option>Golf Balls</option>
+                                    <option>Clubs</option>
+                                    <option>Tees</option>
+                                <optgroup label="-Exercise">
+                                    <option>Equipment</option>
+                                    
+                    </div>
+                </div>
+            </form> <!-- /form -->
+        </div> <!-- ./container -->
+  
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!-- <script src="https://code.jquery.com/jquery-1.11.1.js"></script> -->
+<!-- javascript down here, import jquery first ^        -->
+ 
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
+  </body>
+</html>
