@@ -1,60 +1,260 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- stylesheets here -->
-<link href="/css/main.css" rel="stylesheet">
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-</head>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- stylesheets here -->
+    <link href="/css/main.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
 
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+    </script>
+  </head>
 
 <body>
-<!-- itemID: String,
-	description: String,
-	URL: String,
-	name: String,
-    numberOfRatings: number,
-	rating: number,
- -->
+<!-- Nav Bar to Stay on all pages-->
+ <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Himalaya</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li class="dropdown-submenu">
+            <a class="test" tabindex="-1" href="#">Apparel <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+              <li class="dropdown-submenu">
+                <a class="test" href="#">Men's <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Formal Wear</a></li>
+                  <li><a href="#">Sport Wear</a></li>
+                  <li><a href="#">Casual Wear</a></li>
+                </ul>
+              </li>
+              <li class="dropdown-submenu">
+                <a class="test" href="#">Women's <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Formal Wear</a></li>
+                  <li><a href="#">Sport Wear</a></li>
+                  <li><a href="#">Casual Wear</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown-submenu">
+            <a class="test" tabindex="-1" href="#">Electronics <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+              <li class="dropdown-submenu">
+                <a class="test" href="#">Computers <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Desktops</a></li>
+                  <li><a href="#">Laptops</a></li>
+                </ul>
+              </li>
+              <li class="dropdown-submenu">
+                <a class="test" href="#">Media <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Cameras</a></li>
+                  <li><a href="#">Camcorders</a></li>
+                </ul>
+              </li>
+              <li class="dropdown-submenu">
+                <a class="test" href="#">TV & Accessories <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Televisions</a></li>
+                  <li><a href="#">Accessories</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown-submenu">
+            <a class="test" tabindex="-1" href="#">Sports <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+              <li class="dropdown-submenu">
+                <a class="test" href="#">Baseball <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Bats</a></li>
+                  <li><a href="#">Baseball Balls</a></li>
+                  <li><a href="#">Baseball Gloves</a></li>
+                  <li><a href="#">Other Equipment</a></li>
+                </ul>
+              </li>
+              <li class="dropdown-submenu">
+                <a class="test" href="#">Golf <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Balls</a></li>
+                  <li><a href="#">Clubs</a></li>
+                  <li><a href="#">Tees</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Exercise Equipment</a></li>
+            </ul>
+          </li>
+          <li class="dropdown-submenu">
+            <a class="test" tabindex="-1" href="#">Home Improvements <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+              <li class="dropdown-submenu">
+                <a class="test" href="#">Painting <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Acrylic</a></li>
+                  <li><a href="#">Stain</a></li>
+                  <li><a href="#">Equipment</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Tools</a></li>
+              <li><a href="#">Appliances</a></li>
+              <li><a href="#">Rugs</a></li>
+            </ul>
+          </li>
+          <li class="dropdown-submenu">
+            <a class="test" tabindex="-1" href="#">Office <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+              <li class="dropdown-submenu">
+                <a class="test" href="#">Desks & Desk Chairs <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Small</a></li>
+                  <li><a href="#">Large</a></li>
+                  <li><a href="#">Chairs</a></li>
+                </ul>
+              </li>
+              <li class="dropdown-submenu">
+                <a class="test" href="#">Supplies <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Paper</a></li>
+                  <li><a href="#">Writing Tools</a></li>
+                  <li><a href="#">Other Supplies</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>          
+          <li class="dropdown-submenu">
+            <a class="test" tabindex="-1" href="#">Groceries <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+              <li class="dropdown-submenu">
+                <a class="test" href="#">Raw <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Meat</a></li>
+                  <li><a href="#">Vegetables</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Microwaved Meals</a></li>
+              <li class="dropdown-submenu">
+                <a class="test" href="#">Cutlery <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Spoons</a></li>
+                  <li><a href="#">Forks</a></li>
+                  <li><a href="#">Knives</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown-submenu">
+            <a class="test" tabindex="-1" href="#">Books <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+              <li class="dropdown-submenu">
+                <a class="test" href="#">Hardcover <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">TextBooks</a></li>
+                  <li><a href="#">Non-Fiction</a></li>
+                  <li><a href="#">Fiction</a></li>
+                </ul>
+              </li>
+              <li class="dropdown-submenu">
+                <a class="test" href="#">Paperback <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">TextBooks</a></li>
+                  <li><a href="#">Non-Fiction</a></li>
+                  <li><a href="#">Fiction</a></li>
+                </ul>
+              </li>
+              
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">My Account
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Update Information</a></li>
+          <li><a href="#">Order History</a></li>
+          <li><a href="#">Wish List</a></li>
+          <li><a href="#">Post Item</a></li>
+        </ul>
+      </li>
+    </ul>
+    <form class="navbar-form navbar-left">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search">
+        <div class="input-group-btn">
+          <button class="btn btn-default" type="submit">
+        <i class="glyphicon glyphicon-search"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="pages/signUp.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="pages/signIn_page.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+    </div>
+ </nav>
 
- <div ng-app="myApp" ng-controller="myCtrl">
-<!-- <div class="container">
-<div class="col-sm-4"> -->
-<div width=" 100px" class="row">
-  Description <input id = 'description' type ="text" name="description">  
-  URL <input id = 'URL' type ="text" name="URL">  
-  name <input id = 'name' type ="text" name="name">  
-  numberOfRatings <input id = 'numberOfRatings' type ="text" name="numberOfRatings">  
-  rating <input id = 'rating' type ="text" name="rating">  
-  categoryID <input id = 'categoryID' type ="text" name="categoryID">   
-  <button id='button' type="button">Add Item</button>
-<!-- </div>
-</div> -->
-</div>
-  
 
-<br>  
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Welcome to Himalaya!</h1>
+        <p>The go to online shopping experience for all of your needs</p>
+        <p><a class="btn btn-primary btn-lg" data-toggle="popover" data-placement="bottom" title="About Himalaya" data-content="Himalaya is a start up company which wants to pursue the opportunities of online business. This project is an attempt to bring an efficient buying and selling environment for all types of users, individual buyers and sellers, while also maintaining an environment for professional companies to sell their products. Himalaya consists of many functions that help this company to achieve that task. Himalaya is created by Jacob Hohenstein, Daniel Wright, Tommie Pham, and Thomas Wenner" href="#" role="button">Learn more &raquo;</a></p>
+      </div>
+    </div>
+    <div class="container text-center">
+      <h2>Recommended Items</h2><br>
+      <div class= "row">
+        <div class= "col-sm-4">
+          <img src= "https://placehold.it/150x80?text=IMAGE" class ="img-responsive" style= "width:100%" alt= "Image">
+          <p>Item 1</p>
+        </div>
+        <div class= "col-sm-4">
+          <img src= "https://placehold.it/150x80?text=IMAGE" class ="img-responsive" style= "width:100%" alt= "Image">
+          <p>Item 2</p>
+        </div>
+        <div class= "col-sm-4">
+          <img src= "https://placehold.it/150x80?text=IMAGE" class ="img-responsive" style= "width:100%" alt= "Image">
+          <p>Item 3</p>
+        </div>
+        <div class= "col-sm-4">
+          <img src= "https://placehold.it/150x80?text=IMAGE" class ="img-responsive" style= "width:100%" alt= "Image">
+          <p>Item 4</p>
+        </div>
+        <div class= "col-sm-4">
+          <img src= "https://placehold.it/150x80?text=IMAGE" class ="img-responsive" style= "width:100%" alt= "Image">
+          <p>Item 5</p>
+        </div>
+        <div class= "col-sm-4">
+          <img src= "https://placehold.it/150x80?text=IMAGE" class ="img-responsive" style= "width:100%" alt= "Image">
+          <p>Item 6</p>
+        </div>
+      </div>
+    </div><br>
+      <footer>
+        <p>&copy; Himalaya.com</p>
+      </footer>
+    </div> <!-- /container -->
 
-<br>  
-
-<br>  
-
-<br>
-
-search <input id = 'search' type ="text" ng-model="searchtext">  
-you are trying to search: {{searchtext}}
-<br>
-
-<div>
-  <button id='refreshButton' type="button">refresh items</button>
-  <ul id='itemList'></ul>
-</div>
-
-        
-
-</div>
  
 
 
@@ -66,8 +266,24 @@ you are trying to search: {{searchtext}}
 
 <script src="/js/main.js"></script>
 
+<script>
+$(document).ready(function(){
+  $('.dropdown-submenu a.test').on("click",function(e){
+    $(this).next('ul').toggle();
+    e.stopPropagation();
+    e.preventDefault();
+  });
+});
+</script>
 
-
+<script>
+$(document).ready(function(){
+  $('.dropdown-submenu a.test').on("click", function(e){
+    $(this).next('ul').toggle();
+    e.stopPropagation();
+    e.preventDefault();
+  });
+</script>
 
 </body>
 </html>

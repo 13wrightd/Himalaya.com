@@ -33,6 +33,9 @@ app.get('/', function (req, res) {
   res.sendFile(__dirname+ '/index.html');
   console.log('someone loaded homepage');
 });
+app.get('/pages/*', function (req, res) {
+  res.sendFile(__dirname+ req.path);
+});
 app.get('/js/*', function (req, res) {
   res.sendFile(__dirname+ req.path);
 });
@@ -43,6 +46,7 @@ app.get('/css/*', function (req, res) {
 app.get('/images/*', function (req, res) {
   res.sendFile(__dirname+ req.path);
 });
+
 // app.get('/images/still/*', function (req, res) {
 //   res.sendFile(__dirname+ req.path);
 // });

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- stylesheets here -->
+    <link href="../css/signUp.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </head>
+  <body>
+  	<div class="container">
+            <form class="form-horizontal" role="form">
+                <h2>Register for Himalaya</h2>
+                <div class="form-group">
+                    <label for="userName" class="col-sm-3 control-label">Username</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="userName" placeholder="Username" class="form-control" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="firstName" class="col-sm-3 control-label">Full Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="firstName" placeholder="Full Name" class="form-control" autofocus>
+                        <span class="help-block">Last Name, First Name, eg.: Smith, Harry</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="col-sm-3 control-label">Email</label>
+                    <div class="col-sm-9">
+                        <input type="email" id="email" placeholder="Email" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="col-sm-3 control-label">Password</label>
+                    <div class="col-sm-9">
+                        <input type="password" id="password" placeholder="at least 8 characters" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                      <label for="phonenum" class="col-sm-3 control-label">Phone Number (format: xxxx-xxx-xxxx):</label><br/>
+                      <div class="col-sm-9">
+  						<input id="phonenum" type="tel" placeholder="Phone Number" pattern="^\d{3}-\d{3}-\d{4}$" required class="form-control" >
+  					  </div>
+                </div>
+                <div class="form-group">
+                    <label for="address" class="col-sm-3 control-label">Address</label>
+                    <div class="col-sm-9">
+                        <input type="number" id="street#" placeholder="Street #" class="form-control" ><br>
+                        <input type="text" id="street" placeholder="Street" class="form-control" ><br>
+                        <input type="text" id="city" placeholder="City" class="form-control" ><br>
+                        <select id="state" class="form-control">
+                            <option value="AL">AL</option>
+							<option value="AK">AK</option>
+							<option value="AZ">AZ</option>
+							<option value="AR">AR</option>
+							<option value="CA">CA</option>
+							<option value="CO">CO</option>
+							<option value="CT">CT</option>
+							<option value="DE">DE</option>
+							<option value="DC">DC</option>
+							<option value="FL">FL</option>
+							<option value="GA">GA</option>
+							<option value="HI">HI</option>
+							<option value="ID">ID</option>
+							<option value="IL">IL</option>
+							<option value="IN">IN</option>
+							<option value="IA">IA</option>
+							<option value="KS">KS</option>
+							<option value="KY">KY</option>
+							<option value="LA">LA</option>
+							<option value="ME">ME</option>
+							<option value="MD">MD</option>
+							<option value="MA">MA</option>
+							<option value="MI">MI</option>
+							<option value="MN">MN</option>
+							<option value="MS">MS</option>
+							<option value="MO">MO</option>
+							<option value="MT">MT</option>
+							<option value="NE">NE</option>
+							<option value="NV">NV</option>
+							<option value="NH">NH</option>
+							<option value="NJ">NJ</option>
+							<option value="NM">NM</option>
+							<option value="NY">NY</option>
+							<option value="NC">NC</option>
+							<option value="ND">ND</option>
+							<option value="OH">OH</option>
+							<option value="OK">OK</option>
+							<option value="OR">OR</option>
+							<option value="PA">PA</option>
+							<option value="RI">RI</option>
+							<option value="SC">SC</option>
+							<option value="SD">SD</option>
+							<option value="TN">TN</option>
+							<option value="TX">TX</option>
+							<option value="UT">UT</option>
+							<option value="VT">VT</option>
+							<option value="VA">VA</option>
+							<option value="WA">WA</option>
+							<option value="WV">WV</option>
+							<option value="WI">WI</option>
+							<option value="WY">WY</option>
+                        </select><br>
+                        <input type="number" id="zip" placeholder="Zipcode" class="form-control" ><br>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Gender</label>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="radio-inline">
+                                    <input type="radio" id="maleRadio" value="Male">Male
+                                </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="radio-inline">
+                                    <input type="radio" id="femaleRadio" value="Female">Female
+                                </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="radio-inline">
+                                    <input type="radio" id="uncknownRadio" value="Unknown">Unknown
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- /.form-group -->
+                <div class="form-group">
+                    <label for="age" class="col-sm-3 control-label">Age</label>
+                    <div class="col-sm-9">
+                    	<input type="number" id="age" placeholder="How old are you?" class="form-control" >
+                    </div>
+                </div>
+     			<div class="form-group">
+                    <label for="cardinfo" class="col-sm-3 control-label">Credit Card</label>
+                    <div class="col-sm-9">
+                        <select id="text" class="form-control">
+                        	<option value="">Type</option>
+                        	<option value="Visa">Visa</option>
+                        	<option value="MasterCard">MasterCard</option>
+                        	<option value="Discover">Discover</option>
+                        	<option value="AL">American Express</option>
+                        </select><br>
+                        <input id="cardnum" type="number"  placeholder="Card Number" class="form-control" ><br>
+                  		<label>Expiration Date</label>
+			                <select id="month" class="form-control">
+			                    <option value="01">January</option>
+			                    <option value="02">February </option>
+			                    <option value="03">March</option>
+			                    <option value="04">April</option>
+			                    <option value="05">May</option>
+			                    <option value="06">June</option>
+			                    <option value="07">July</option>
+			                    <option value="08">August</option>
+			                    <option value="09">September</option>
+			                    <option value="10">October</option>
+			                    <option value="11">November</option>
+			                    <option value="12">December</option>
+			                </select><br>
+			                <select id="date" class="form-control">
+			                    <option value="16"> 2016</option>
+			                    <option value="17"> 2017</option>
+			                    <option value="18"> 2018</option>
+			                    <option value="19"> 2019</option>
+			                    <option value="20"> 2020</option>
+			                    <option value="21"> 2021</option>
+			                </select>
+			            </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-9 col-sm-offset-3">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox">I accept <a href="#">terms</a>
+                            </label>
+                        </div>
+                    </div>
+                </div> <!-- /.form-group -->
+                <div class="form-group">
+                    <div class="col-sm-9 col-sm-offset-3">
+                        <button type="submit" class="btn btn-primary btn-block">Register</button><br><br><br><br>
+                    </div>
+                </div>
+            </form> <!-- /form -->
+        </div> <!-- ./container -->
+  
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+<!-- javascript down here, import jquery first ^        -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
+  </body>
+</html>

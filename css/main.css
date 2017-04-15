@@ -1,14 +1,18 @@
 body {
-    background-color: #e5f4ff;
+	padding-top: 10px;
+  	padding-bottom: 20px;
+  	background-color: rgb(204,222,249) !important;
 }
 
-h1 {
-    background-color: #00ff00;
+.jumbotron {
+	background-image: url("/images/HimalayanMountains.jpg")
+}
+.dropdown-submenu: {
+	position: relative;
 }
 
-p {
-    background-color: rgb(255,0,255);
-}
-#itemList {
-	list-style: none;
+.dropdown-submenu .dropdown-menu{
+	top:0;
+	left:100%;
+	margin-top: -1px;
 }
