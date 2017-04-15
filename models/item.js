@@ -14,6 +14,42 @@ var itemSchema = mongoose.Schema({
 
 });
 
+var Users = mongoose.Schema({
+	username: String,
+	password: String,
+	email: String,
+	addresses:[
+	{
+		street: String,
+		city: String,
+		state: String,
+		zip: Number
+	}
+	],
+	credit_cards:[
+	{
+		type: String,
+		card_number: Number,
+		expiration_date: Number
+	}
+	],
+	phone_numbers:[
+	{
+		number: Number
+	}
+	],
+	ratings:[
+	{
+		comment: String,
+		star: Number
+	}
+	],
+	
+})
+//TODO
+//db.collection.createIndex( <key and index type specification>, { unique: true } )
+//^ enforce uniqueness on certain fields
+
 var items = mongoose.model('item', itemSchema);
 
 module.exports = items;
