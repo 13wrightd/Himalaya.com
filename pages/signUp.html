@@ -30,8 +30,8 @@
                 <div class="form-group">
                     <label for="firstName" class="col-sm-3 control-label">Full Name</label>
                     <div class="col-sm-9">
-                        <input type="text" id="firstName" placeholder="Full Name" class="form-control" autofocus>
-                        <span class="help-block">Last Name, First Name, eg.: Smith, Harry</span>
+                        <input type="text" id="name" placeholder="Full Name" class="form-control" autofocus>
+                        <span class="help-block">firstname lastname, eg.: Harry Smith</span>
                     </div>
                 </div>
                 <div class="form-group">
@@ -49,13 +49,12 @@
                 <div class="form-group">
                       <label for="phonenum" class="col-sm-3 control-label">Phone Number (format: xxx-xxx-xxxx):</label><br/>
                       <div class="col-sm-9">
-  						<input id="phonenum" type="tel" placeholder="Phone Number" pattern="^\d{3}-\d{3}-\d{4}$" required class="form-control" >
+  						<input id="phoneNum" type="tel" placeholder="Phone Number" pattern="^\d{3}-\d{3}-\d{4}$" required class="form-control" >
   					  </div>
                 </div>
                 <div class="form-group">
                     <label for="address" class="col-sm-3 control-label">Address</label>
                     <div class="col-sm-9">
-                        <input type="number" id="streetNum" placeholder="Street #" class="form-control" ><br>
                         <input type="text" id="street" placeholder="Street" class="form-control" ><br>
                         <input type="text" id="city" placeholder="City" class="form-control" ><br>
                         <select id="state" class="form-control">
@@ -141,7 +140,7 @@
                         	<option value="Discover">Discover</option>
                         	<option value="AL">American Express</option>
                         </select><br>
-                        <input id="cardnum" type="number"  placeholder="Card Number" class="form-control" ><br>
+                        <input id="cardNum" type="number"  placeholder="Card Number" class="form-control" ><br>
                   		<label>Expiration Date</label>
 			                <select id="month" class="form-control">
 			                    <option value="01">January</option>
@@ -179,7 +178,7 @@
                 </div> <!-- /.form-group -->
                 <div class="form-group">
                     <div class="col-sm-9 col-sm-offset-3">
-                        <button id='submit button' type="submit" class="btn btn-primary btn-block">Register</button><br><br><br><br>
+                        <button id='submitButton' type="submit" class="btn btn-primary btn-block">Register</button><br><br><br><br>
                     </div>
                 </div>
             </form> <!-- /form -->
@@ -192,5 +191,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
+    <script src="../js/signUp.js"></script>
   </body>
 </html>

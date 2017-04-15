@@ -54,6 +54,7 @@ app.get('/images/*', function (req, res) {
 
 
 var item = require('./models/item.js');
+var user = require('./models/user.js');
 
 
 io.on('connection', function(socket) {
@@ -92,6 +93,31 @@ var messages = mongoose.model('message', messageSchema);
         
     });
   });
+  socket.on('add user', function(msg) {
+      var b = new user({
+
+        userName: msg.userName,
+        name: msg.name,
+        email: msg.email,
+        password: msg.password,
+        phoneNum: msg.phoneNum,
+        street: msg.street,
+        city: msg.city,
+        state: msg.state,
+        zip: msg.zip,
+        gender: msg.gender,
+        age: msg.age,
+        type: msg.type,
+        cardNum: msg.cardNum,
+        month: msg.month,
+        date: msg.date
+
+      });
+      b.save();
+
+  });
+
+  
 
   socket.on('button clicked', function(msg) {
 
