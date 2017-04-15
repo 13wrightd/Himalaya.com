@@ -257,7 +257,7 @@
  
 
 
-<!-- <script src="https://code.jquery.com/jquery-1.11.1.js"></script> -->
+<script src="https://code.jquery.com/jquery-1.11.1.js"></script> 
 <!-- javascript down here, import jquery first ^        -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -274,10 +274,12 @@ $(document).ready(function(){
   });
 });
 </script>
-<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-<!-- javascript down here, import jquery first ^        -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script> 
+<script>
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover(); 
+});
+</script>
+
 </body>
 </html>
