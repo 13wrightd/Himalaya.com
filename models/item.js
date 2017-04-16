@@ -16,8 +16,6 @@ var mongoose = require('mongoose');
 
 //TJ stuff April 16, 2017 starts here
 
-//discriminator to allow inheritance in Users schema
-var options = {discriminatorKey: 'kind'};
 
 //users schema (made up of individuals(who can buy and sell) and suppliers(who can only sell))
 var userSchema = mongoose.Schema({
@@ -62,9 +60,9 @@ var userSchema = mongoose.Schema({
 		reserve_price: Number,
 		ending_price: Number
 	}
-	] options});//note 'options' for inheritance
-//now the inheriting users, individuals and suppliers
-var individuals = new mongoose.Schema({
+	],
+	//individuals
+	is_individual: Boolean,
 	name: String,
 	age: Number,
 	gender: String,
@@ -74,28 +72,21 @@ var individuals = new mongoose.Schema({
 		item_id: Number,
 		URL: String
 	}
-	]
-}, options);
-var suppliers = new mongoose.Schema({
+	],
+	//suppliers
+	is_supplier: Boolean,
 	company_name: String,
 	company_category: String,
 	revenue: Number,
-	point_of_contact: String
-}, options);
+	point_of_contact: String,
 
-//events for adding particular users
-var AddIndividualEvent = Event.discriminator('AddIndividual',
-	individuals);
-var AddSupplierEvent = Event.discriminator('AddSupplier',
-	suppliers);
+	});
 
-var user = mongoose.model('user', userSchema);
 
-//do we want to have suppliers and individuals in seperate collections?
 
 //make separate collection for categories
 var categories = new mongoose.schema{
-	
+
 }
 
 var itemSchema = new mongoose.Schema({
@@ -138,7 +129,7 @@ var auctionSchema = new mongoose.Schema({
 	current_bid: {
 		amount: Number,
 		bidder: {type: mongoose.Schema.Types.ObjectId}
-	}
+	},
 	//array of bidders that are notified at end of auction
 	bidders:[{type: mongoose.Schema.Types.ObjectId,
 		unique: true, amount: Number}]
