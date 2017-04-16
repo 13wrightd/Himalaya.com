@@ -2,17 +2,6 @@
 
 var mongoose = require('mongoose');
 
-/*var itemSchema = mongoose.Schema({
-	itemID: Number,
-	description: String,
-	URL: String,
-	name: String,
-    numberOfRatings: Number,
-	rating: Number,
-	categoryID: Number,
-	dateAdded: { type: Date, default: Date.now }
-
-});*/
 
 //TJ stuff April 16, 2017 starts here
 
@@ -154,11 +143,4 @@ var saleSchema = new mongoose.Schema({
 });
  var sale = mongoose.model('sale',saleSchema);
 
-//TODO
-//db.collection.createIndex( <key and index type specification>, { unique: true } )
-//^ enforce uniqueness on certain fields
-
-//var items = mongoose.model('item', itemSchema);
-
-//module.exports = items;
 module.exports = {item,sale,auction,user};

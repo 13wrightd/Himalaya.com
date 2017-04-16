@@ -53,8 +53,22 @@ app.get('/images/*', function (req, res) {
 
 
 
-var item = require('./models/item.js');
+var schemas = require('./models/schemas.js');
 var user = require('./models/oldUser.js');
+
+var tempUser= new user(
+{
+  test:5,
+  test2:3
+})
+tempUser.save(function(error){
+        // if (error){
+        //     console.log('item was successfully added');
+        //   }
+        //   else{
+        //     console.log('item add failed');
+        //   }
+      })
 
 
 io.on('connection', function(socket) {
