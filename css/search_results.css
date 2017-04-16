@@ -1,0 +1,40 @@
+
+body {
+	padding-top: 10px;
+  	padding-bottom: 20px;
+  	background-color: rgb(204,222,249) !important;
+}
+
+.jumbotron {
+	background-image: url("/images/HimalayanMountains.jpg")
+}
+
+h1, h3 {
+	text-align: center;
+}
+
+article{
+	margin-left: 10px;
+	padding: 1em;
+	overflow: hidden;
+	text-align: right;
+	padding-right: 20px;
+}
+
+.imgBox{
+	float: left;
+	padding: 10px;
+}
+
+.resultsBox{
+	position: absolute;
+    top: 150px;
+    right: 30%;
+    background-color: rgb(240, 234, 214);
+    border: 5px solid#000080;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-bottom:15px;
+    width: 40%;
+    height: 250px;
+}
