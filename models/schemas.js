@@ -73,16 +73,24 @@ var userSchema = mongoose.Schema({
 var user = mongoose.model('user', userSchema);
 
 
+
 //make separate collection for categories
 
-// var categories = new mongoose.schema{
+var categoriesSchema = new mongoose.schema{
+	category_name: String,
+	category_parent: String,
+	category_children: [String]
+}
 
-// }
+var categories = mongoose.model('categories', categoriesSchema);
 
-var itemSchema = new mongoose.Schema({
-	URL: String,
+var saleItemSchema = new mongoose.Schema({
+	seller: {
+		type: mongoose.Schema.Types.ObjectId},
 	description: String,
+	price: Number,
 	category: String,
+	quantity: Number,
 	address:{
 		street: String,
 		city: String,
@@ -97,7 +105,10 @@ var itemSchema = new mongoose.Schema({
 	]
 });
 
-var item = mongoose.model('item', itemSchema);
+var saleItem = mongoose.model('saleItem', saleItemSchema);
+
+
+
 
 //auctions
 
@@ -131,6 +142,7 @@ var auctionSchema = new mongoose.Schema({
 var auction = mongoose.model('auction', auctionSchema);
 
 var saleSchema = new mongoose.Schema({
+	type: String,// sale or auction
 	item_name: String,
 	URL: String,
 	seller: {
@@ -141,6 +153,8 @@ var saleSchema = new mongoose.Schema({
 	price: Number,
 	amount: Number
 });
- var sale = mongoose.model('sale',saleSchema);
 
-module.exports = {item,sale,auction,user};
+var sale = mongoose.model('sale',saleSchema);
+
+module.exports = {saleItem,sale,auction,user,categories};
+
