@@ -54,7 +54,7 @@ app.get('/images/*', function (req, res) {
 
 
 var item = require('./models/item.js');
-var user = require('./models/user.js');
+var user = require('./models/oldUser.js');
 
 
 io.on('connection', function(socket) {

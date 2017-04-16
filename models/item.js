@@ -81,13 +81,14 @@ var userSchema = mongoose.Schema({
 	point_of_contact: String,
 
 	});
-
+var user = mongoose.model('user', userSchema);
 
 
 //make separate collection for categories
-var categories = new mongoose.schema{
 
-}
+// var categories = new mongoose.schema{
+
+// }
 
 var itemSchema = new mongoose.Schema({
 	URL: String,
@@ -159,4 +160,5 @@ var saleSchema = new mongoose.Schema({
 
 //var items = mongoose.model('item', itemSchema);
 
-module.exports = items;
+//module.exports = items;
+module.exports = {item,sale,auction,user};
