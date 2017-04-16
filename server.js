@@ -110,7 +110,7 @@ var messages = mongoose.model('message', messageSchema);
         type: msg.type,
         cardNum: msg.cardNum,
         month: msg.month,
-        date: msg.date
+        date: msg.date,
 
       });
       b.save();
