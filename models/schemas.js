@@ -16,19 +16,18 @@ var userSchema = mongoose.Schema({
 		street: String,
 		city: String,
 		state: String,
-		zip: Number
-	}
-	],
-	credit_cards:[
-	{
-		type: String,
-		card_number: Number,
-		expiration_date: Number
-	}
-	],
+		zip: String
+	}],
+	credit_cards:[{
+		cardtype: String,
+		number: String,
+		month: String,
+		date: String
+		
+	}],
 	phone_numbers:[
 	{
-		number: Number
+		number: String
 	}
 	],
 	ratings:[
@@ -46,8 +45,8 @@ var userSchema = mongoose.Schema({
 		},
 		start_time: Date,
 		finish_time: Date,
-		reserve_price: Number,
-		ending_price: Number
+		reserve_price: String,
+		ending_price: String
 	}
 	],
 	//individuals
@@ -143,4 +142,11 @@ var saleSchema = new mongoose.Schema({
 });
  var sale = mongoose.model('sale',saleSchema);
 
-module.exports = {item,sale,auction,user};
+
+module.exports = 
+{
+	item,
+	sale,
+	auction,
+	user
+};

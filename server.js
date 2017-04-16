@@ -56,19 +56,20 @@ app.get('/images/*', function (req, res) {
 var schemas = require('./models/schemas.js');
 var user = require('./models/oldUser.js');
 
-var tempUser= new user(
-{
-  test:5,
-  test2:3
-})
-tempUser.save(function(error){
-        // if (error){
-        //     console.log('item was successfully added');
-        //   }
-        //   else{
-        //     console.log('item add failed');
-        //   }
-      })
+// var tempUser= new schemas.user(
+// {
+//   username:'zzzzz',
+//   test:5,
+//   test2:3
+// })
+// tempUser.save(function(error){
+//         // if (error){
+//         //     console.log('item was successfully added');
+//         //   }
+//         //   else{
+//         //     console.log('item add failed');
+//         //   }
+//       });
 
 
 io.on('connection', function(socket) {
@@ -107,27 +108,60 @@ var messages = mongoose.model('message', messageSchema);
         
     });
   });
-  socket.on('add user', function(msg) {
-      var b = new user({
 
-        userName: msg.userName,
+
+  socket.on('add user', function(msg) {
+    console.log(typeof msg.type);
+    console.log(typeof msg.cardNum);
+    console.log(typeof msg.month);
+    console.log(typeof msg.date);
+      var b = new schemas.user({
+        username: msg.userName,
         name: msg.name,
         email: msg.email,
         password: msg.password,
-        phoneNum: msg.phoneNum,
-        street: msg.street,
-        city: msg.city,
-        state: msg.state,
-        zip: msg.zip,
+        phone_numbers: [{number:msg.phoneNum}],
+        
         gender: msg.gender,
         age: msg.age,
-        type: msg.type,
-        cardNum: msg.cardNum,
-        month: msg.month,
-        date: msg.date,
-
+        addresses:[{
+          street: msg.street,
+          city: msg.city,
+          state: msg.state,
+          zip: msg.zip
+        }],
+        
+        credit_cards:[{
+          cardtype: msg.type,
+          number: msg.cardNum,
+          month: msg.month,
+          date: msg.date
+        }],
+        is_individual: true,
       });
-      b.save();
+      b.save(function(error){
+        if(error){
+          console.log(error.message);
+        }
+      });
+      console.log('saved');
+// addresses:[
+//   {
+//     street: String,
+//     city: String,
+//     state: String,
+//     zip: String
+//   }],
+//   credit_cards:[
+//   {
+//     type: String,
+//     number: String,
+//     month: String,
+//     date: String
+//   }],
+
+
+
 
   });
 
