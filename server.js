@@ -191,6 +191,10 @@ var messages = mongoose.model('message', messageSchema);
         if(res==true){
           console.log('success, in session')
         }
+        else{
+          console.log('not in session');
+        }
+
         });
       console.log("zzzzzz");
    });
@@ -265,8 +269,8 @@ function isInSession(user, sessionString, callback){
       console.log(currentTime);
       if(currentTime<tempTime){
           console.log("in session");
-          currentTime+=5*1000*60;
-          doc.session_date=currentTime;
+          currentTime=currentTime.getTime()+5*1000*60;
+          doc.session_date=new Date(currentTime);
           doc.save();
           console.log('returning true');
           inSession=true;
@@ -278,7 +282,7 @@ function isInSession(user, sessionString, callback){
     console.log('sup1');
     return callback(false);
   });
-  console.log(test);
+ // console.log(test);
   console.log('sup2');
 };
 
