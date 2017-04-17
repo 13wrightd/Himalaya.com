@@ -187,7 +187,11 @@ var messages = mongoose.model('message', messageSchema);
    });
    socket.on('test session', function(msg) {
       console.log("is in session?");
-      console.log(isInSession(msg.username, msg.sessionString));
+      var c=isInSession(msg.username, msg.sessionString);
+      console.log(c);
+      if(c==true){
+        console.log('def in session');
+      }
       console.log("zzzzzz");
    });
 
@@ -250,6 +254,7 @@ function generateID() {
 
 function isInSession(user, sessionString){
   var currentTime = new Date(Date.now());
+  var inSession=false;
   schemas.user.findOne({username:user},function(err, doc){
     if(sessionString=doc.session_string){
       console.log(doc.session_date);
@@ -264,11 +269,20 @@ function isInSession(user, sessionString){
           doc.session_date=currentTime;
           doc.save();
           console.log('returning true');
+          inSession=true;
           return true;
       }
     }
+    if(inSession){
+      return true;
+    }
+    console.log('sup1');
     return false;
   });
+  if(inSession){
+      return true;
+    }
+  console.log('sup2');
   return false;
 };
 
