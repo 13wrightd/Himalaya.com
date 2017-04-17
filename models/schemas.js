@@ -11,6 +11,8 @@ var userSchema = mongoose.Schema({
 	username: String,
 	password: String,
 	email: String,
+	session_date: { type: Date, default: Date.now },//.addMinutes(10)},
+	session_string: String,
 	addresses:[
 	{
 		street: String,

@@ -165,7 +165,25 @@ var messages = mongoose.model('message', messageSchema);
 
   });
 
-  
+   socket.on('authenticate', function(msg) {
+    console.log(msg.username);
+      schemas.user.findOne({username:msg.username},function(err, doc){
+        console.log('got a user');
+        if(doc.password == msg.password){
+          var sessionString=generateID();
+          doc.session_string=sessionString;
+
+          var timeout = Date.now()+1000*60*5;
+          //timeout.setMinutes(timeout.getMinutes() + 5);
+
+          doc.session_date=timeout;
+          doc.save();
+          io.emit('authentication data', sessionString);
+
+        }
+
+      });
+   });
 
   socket.on('button clicked', function(msg) {
 
@@ -214,8 +232,15 @@ var server = http.listen(app.get('port') , function () {
     console.log("Express server listening at %s:%d ", app.get('ip'),app.get('port'));
 });
 
-
-
+function generateID() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  }
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+    s4() + '-' + s4() + s4() + s4();
+}
 
 
 //javascript class example
@@ -272,6 +297,7 @@ function playerList(){
 playerList.prototype.add = function(socketId){
   this.players.push(new player(200,200, socketId));
 }
+
 
 playerList.prototype.removeBySocketId = function(socketId){
   for(var i = 0; i<this.players.length;i++){
