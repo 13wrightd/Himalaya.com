@@ -187,11 +187,11 @@ var messages = mongoose.model('message', messageSchema);
    });
    socket.on('test session', function(msg) {
       console.log("is in session?");
-      var c=isInSession(msg.username, msg.sessionString);
-      console.log(c);
-      if(c==true){
-        console.log('def in session');
-      }
+      isInSession(msg.username, msg.sessionString, function(res){
+        if(res==true){
+          console.log('success, in session')
+        }
+        });
       console.log("zzzzzz");
    });
 
@@ -252,10 +252,10 @@ function generateID() {
     s4() + '-' + s4() + s4() + s4();
 }
 
-function isInSession(user, sessionString){
+function isInSession(user, sessionString, callback){
   var currentTime = new Date(Date.now());
   var inSession=false;
-  schemas.user.findOne({username:user},function(err, doc){
+  var test=schemas.user.findOne({username:user},function(err, doc){
     if(sessionString=doc.session_string){
       console.log(doc.session_date);
       console.log(currentTime);
@@ -270,20 +270,16 @@ function isInSession(user, sessionString){
           doc.save();
           console.log('returning true');
           inSession=true;
-          return true;
+          return callback(true);
       }
+      return callback(false);
     }
-    if(inSession){
-      return true;
-    }
+
     console.log('sup1');
-    return false;
+    return callback(false);
   });
-  if(inSession){
-      return true;
-    }
+  console.log(test);
   console.log('sup2');
-  return false;
 };
 
 
