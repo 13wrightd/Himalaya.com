@@ -178,11 +178,17 @@ var messages = mongoose.model('message', messageSchema);
 
           doc.session_date=timeout;
           doc.save();
+          console.log("sending authentication data");
           io.emit('authentication data', sessionString);
 
         }
 
       });
+   });
+   socket.on('test session', function(msg) {
+      console.log("is in session?");
+      console.log(isInSession(msg.username, msg.sessionString));
+      console.log("zzzzzz");
    });
 
   socket.on('button clicked', function(msg) {
@@ -241,6 +247,30 @@ function generateID() {
   return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
     s4() + '-' + s4() + s4() + s4();
 }
+
+function isInSession(user, sessionString){
+  var currentTime = new Date(Date.now());
+  schemas.user.findOne({username:user},function(err, doc){
+    if(sessionString=doc.session_string){
+      console.log(doc.session_date);
+      console.log(currentTime);
+      var tempTime=new Date(doc.session_date);
+      console.log('times');
+      console.log(tempTime);
+      console.log(currentTime);
+      if(currentTime<tempTime){
+          console.log("in session");
+          currentTime+=5*1000*60;
+          doc.session_date=currentTime;
+          doc.save();
+          console.log('returning true');
+          return true;
+      }
+    }
+    return false;
+  });
+  return false;
+};
 
 
 //javascript class example
