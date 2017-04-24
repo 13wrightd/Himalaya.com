@@ -69,14 +69,14 @@
  </nav>
     <div class="searchLook">
     <h1>Advance Search</h1>
-    <form>
-      Item: <input type="text" name="itemName"><br><br>
+    <div style="padding-left:70px">
+      Keyword: <input id='keyword' type="text" name="itemName"><br><br>
       Price-range:<br> 
-      From: <input type="text" name="fromPrice"><nbr> To: <input type="text" name="toPrice"><br><br>
-      Category: <input type="text" name="category"><br><br>
+      From: <input type="text" id='priceLow' name="fromPrice"><nbr> To: <input type="text" id='priceHigh' name="toPrice"><br><br>
+      Category: <input type="text" id='category' name="category"><br><br>
       Rating:<br>
-      From: <input type="text" name="fromRating"><nbr>
-      To: <input type="text" name="toRating"><br><br>
+      From: <input type="text" id='ratingLow' name="fromRating"><nbr>
+      To: <input type="text" id='ratingHigh' name="toRating"><br><br>
       <input type="radio" name="sellType" value="auction">
       Auction<nbr>
       <input type="radio" name="sellType" value="fixedPrice"> Fixed Price<nbr>
@@ -84,9 +84,13 @@
       Search by Description:<br>
       <textarea name="description" id="descriptionSearch">
       </textarea><br><br>
-      <input type="submit" value="Search"><br>
-    </form>
+      <input type="submit" id='submitButton' value="Search"><br>
+    </div>
 
     </div>
+    <ul id='resultList' class='list-group'></ul>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
+    <script src="../js/advance_Search.js"></script>
  </body>
 </html>

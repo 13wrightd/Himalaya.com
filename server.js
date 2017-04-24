@@ -249,6 +249,26 @@ var messages = mongoose.model('message', messageSchema);
       io.emit('item info', doc);
     });
    });
+   socket.on('search', function(msg){
+    console.log(msg);
+      schemas.saleItem.find({
+        $and:[
+          {$or:[
+            {"title": new RegExp(msg.title,'i')},
+            {"description": new RegExp(msg.title,'i')}
+          ]},
+          {$and:[
+            {"price": {$gte: msg.priceLow}},
+            {"price": {$lte: msg.priceHigh}}
+          ]},
+          {"category": new RegExp(msg.category,'i')}
+
+        ]
+      },function(err, doc){
+        io.emit('search results',doc);
+      });
+
+   });
   socket.on('button clicked', function(msg) {
 
     io.emit('button was clicked', msg);
