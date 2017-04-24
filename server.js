@@ -438,3 +438,19 @@ playerList.prototype.update = function(){
 }
 var players= new playerList();
 */
+
+
+
+
+// // (10) sale report
+// var salesDate = new Date(Date.now()-1000*60*30); 
+// //30 minutes
+
+// var currentDate = new Date(Date.now());
+
+// //should return all sales from up to 30 minutes ago
+// var recentSales = sale.find({"sale_time": {$gt: salesDate}});
+
+// //should return aggregation of auctions from up to 30 minutes ago
+
+// var recentAuctionAggregate = auction.aggregate({$match: {current_bid.bid_date:{$gt: salesDate}}}, {$project: {_id: 0, current_bid.amount: 1}},{$group: {30_min_bid_num: {$sum: 1}, combined_bid_amounts: {$sum: "$current_bid.amount"}}})

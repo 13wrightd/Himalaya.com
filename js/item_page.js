@@ -11,7 +11,9 @@ Url = {
         return vars;
     }
 };
+
 $(document).ready(function(){
+	
 	
 	socket.emit('get item', Url.get.id);
 		
@@ -22,6 +24,10 @@ $(document).ready(function(){
 			id:Url.get.id
 		};
 		socket.emit('add comment', msg);
+		setTimeout(function(){
+			socket.emit('get item', Url.get.id);
+		},500);
+
 	});
 
 
@@ -30,14 +36,31 @@ $(document).ready(function(){
 
 	socket.on('item info', function(msg){
 		$('#category').html(msg.category);
-		$('#rating').html(msg.rating);
+		
 		$('#price').html("$"+ msg.price);
 		$('#title').html(msg.title);
 		$('#image').attr("src",msg.url);
+		var count=0;
+		var rating=0;
+		$("#comments").empty();
 		//$("#comments").append("<li style='width:50%' class='list-group-item'>"+ "Comments"+'<span style="float:right">'+"Rating"+'</span>'+'</li>');
 		jQuery.each( msg.ratings, function( i, val ) {
+			console.log("s"+val.star);
+			rating+=val.star;
+			console.log('sum '+rating);
+			count+=1;
   			$("#comments").append("<li style='width:50%' class='list-group-item'>"+ val.comment+'<span style="float:right">'+val.star+'</span>'+'</li>');
 		});
+		console.log(rating);
+		if(count>0){
+			rating=rating/count;
+		}
+		else{
+			rating=0;
+		}
+		$('#rating').html(rating);
+		console.log(count);
+		
 
 		
 	});
