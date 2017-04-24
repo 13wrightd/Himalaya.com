@@ -88,12 +88,14 @@
  		<h3>Type:</h3>
  		<p id='type'>Auction/Fixed Price</p>
  	</div>
-
- 	<form>
-    Reveiw:<br>
+  <div id='review'>
+ 	<!-- <form action> -->
+    Review:<br>
     <textarea name="comment"  id="itemReviewComment">Write your review here.</textarea>
+    <input style='width:100px' id ='itemReviewRating' type="text" class="form-control" placeholder="rating">
     <input type="submit" value="Submit" id="submitReview">
-  </form>
+  <!-- </form> -->
+  </div>
   <div class="leftAbsolute">
     <h3>Reviews:</h3>
     <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#comments">See comments</button>

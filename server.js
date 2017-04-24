@@ -231,7 +231,19 @@ var messages = mongoose.model('message', messageSchema);
         });
       console.log("zzzzzz");
    });
+   socket.on('add comment', function(msg){
+    var newComment={
+      comment:msg.comment,
+      star:parseInt(msg.rating)
+    };
+    schemas.saleItem.findByIdAndUpdate(msg.id,{$push: {"ratings": newComment}},function(err, model) {
+        console.log(err);
+    });
 
+      // comment:$("#itemReviewComment").val(),
+      // rating:$("itemReviewRating").val(),
+      // id:Url.get.id
+   });
    socket.on('get item', function(msg) {
     schemas.saleItem.findOne({"_id": msg},function(err, doc){
       io.emit('item info', doc);

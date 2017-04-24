@@ -15,8 +15,13 @@ $(document).ready(function(){
 	
 	socket.emit('get item', Url.get.id);
 		
-	$('#submitButton').click(function(){
-		socket.emit('add user', msg);
+	$('#submitReview').click(function(){
+		var msg= {
+			comment:$("#itemReviewComment").val(),
+			rating:$("#itemReviewRating").val(),
+			id:Url.get.id
+		};
+		socket.emit('add comment', msg);
 	});
 
 
@@ -29,7 +34,7 @@ $(document).ready(function(){
 		$('#price').html("$"+ msg.price);
 		$('#title').html(msg.title);
 		$('#image').attr("src",msg.url);
-		$("#comments").append("<li style='width:50%' class='list-group-item'>"+ "Comments"+'<span style="float:right">'+"Rating"+'</span>'+'</li>');
+		//$("#comments").append("<li style='width:50%' class='list-group-item'>"+ "Comments"+'<span style="float:right">'+"Rating"+'</span>'+'</li>');
 		jQuery.each( msg.ratings, function( i, val ) {
   			$("#comments").append("<li style='width:50%' class='list-group-item'>"+ val.comment+'<span style="float:right">'+val.star+'</span>'+'</li>');
 		});
