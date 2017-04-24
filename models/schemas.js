@@ -89,6 +89,8 @@ var saleItemSchema =  mongoose.Schema({
 	seller: {
 		type: mongoose.Schema.Types.ObjectId},
 	description: String,
+	title: String,
+	url: String,
 	price: Number,
 	category: String,
 	quantity: Number,

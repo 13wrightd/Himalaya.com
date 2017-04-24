@@ -56,6 +56,39 @@ app.get('/images/*', function (req, res) {
 var schemas = require('./models/schemas.js');
 var user = require('./models/oldUser.js');
 
+
+var b = new schemas.saleItem({
+ // seller: {
+  //  type: mongoose.Schema.Types.ObjectId},
+  title: 'pancake bunny',
+  description: 'random description ',
+  price: 50,
+  category: 'clothes',
+  quantity: 20,
+  url: 'http://i1.kym-cdn.com/photos/images/original/000/007/445/pancake_bunny.jpg',
+  address:{
+    street: '3501 Sheramy Drive',
+    city: 'Fairview',
+    state: 'PA',
+    zip: 16415
+  },
+  ratings:[
+  {
+    comment:'good item for the most part',
+    star:4
+  },
+  {
+    comment:'great product',
+    star:5
+  },
+  {
+    comment:'not worth it at all',
+    star:1
+  }
+  ]
+});
+// b.save();
+
 // var tempUser= new schemas.user(
 // {
 //   username:'zzzzz',
@@ -199,6 +232,11 @@ var messages = mongoose.model('message', messageSchema);
       console.log("zzzzzz");
    });
 
+   socket.on('get item', function(msg) {
+    schemas.saleItem.findOne({"_id": msg},function(err, doc){
+      io.emit('item info', doc);
+    });
+   });
   socket.on('button clicked', function(msg) {
 
     io.emit('button was clicked', msg);
