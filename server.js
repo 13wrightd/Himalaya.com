@@ -25,6 +25,30 @@ db.on('error', console.error.bind(console, 'Error: '));
 db.once('open', function(){
     console.log('Database connected.');
 });
+
+setTimeout(function(){
+  //put stuff for querying if time is over limit
+  schemas.auction.find({finish_time: {$lt: Date.now()}}, function(err,doc){
+    //for all finished auctions:
+    //1. construct and send notification about finished notificationa about auction to all participants
+    //2. put finished auction info into saleSchema
+    //3. change boolean "finished" to true for auctionSchema
+    var notification = 
+
+  }, 10000);//every 10 seconds
+
+setTimeout(function(){
+  //close all auctions at the end of the day by doing as follows:
+  //for all auctions:
+    //check if current auction bid is equal to or over reserve price
+    //if so, do 1-3 below
+    //1. construct and send notification about finished notificationa about auction to all participants
+    //2. put finished auction info into saleSchema
+    //3. change boolean "finished" to true for auctionSchema
+  //if it is not over reserve price, delete the auction from the database
+
+
+}, 1000*60*60*24);//every 24 hours
 ////////////////////////////////////
 
 
@@ -223,6 +247,7 @@ var messages = mongoose.model('message', messageSchema);
       isInSession(msg.username, msg.sessionString, function(res){
         if(res==true){
           console.log('success, in session')
+
         }
         else{
           console.log('not in session');
@@ -231,6 +256,34 @@ var messages = mongoose.model('message', messageSchema);
         });
       console.log("zzzzzz");
    });
+   socket.on('post auction', function(msg) {
+      console.log("is in session?");
+      isInSession(msg.username, msg.sessionString, function(res){
+        if(res==true){
+          console.log('success, in session');
+          var auctionToPost =  new schemas.saleItem({
+          item_name: msg.itemName,
+          category: msg.itemCategory,
+          URL: msg.itemPictureURL,
+          description: msg.description,
+          // address:{
+          //   state:msg.itemLocation
+          // }
+          address.state: msg.itemLocation,
+          seller: msg.username,
+          finish_time: new Date(Date.now()+60*60*10*1000),//auction ends 10 hours from beginning
+          reserve_price: msg.reservePrice
+          })
+
+          
+        }
+        else{
+          console.log('not in session');
+        }
+
+        });
+   });
+
    socket.on('add comment', function(msg){
     var newComment={
       comment:msg.comment,
