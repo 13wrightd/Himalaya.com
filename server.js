@@ -25,6 +25,35 @@ db.on('error', console.error.bind(console, 'Error: '));
 db.once('open', function(){
     console.log('Database connected.');
 });
+
+setTimeout(function(){
+  console.log("called settimeout");
+  //put stuff for querying if time is over limit
+  schemas.auction.find({finish_time: {$lt: Date.now()}}, function(err,doc){
+  //for all auctions:
+    //check if current auction bid is equal to or over reserve price
+    //if so, do 1-3 below
+    //1. construct and send notification about finished notificationa about auction to all participants
+    //2. put finished auction info into saleSchema
+    //3. change boolean "finished" to true for auctionSchema
+  //if it is not over reserve price, delete the auction from the database
+});
+
+  }, 10000000);//every 10 seconds
+
+setTimeout(function(){
+  console.log("called settimeout")
+  //close all auctions at the end of the day by doing as follows:
+  //for all auctions:
+    //check if current auction bid is equal to or over reserve price
+    //if so, do 1-3 below
+    //1. construct and send notification about finished notificationa about auction to all participants
+    //2. put finished auction info into saleSchema
+    //3. change boolean "finished" to true for auctionSchema
+  //if it is not over reserve price, delete the auction from the database
+
+
+}, 1000*60*60*24);//every 24 hours
 ////////////////////////////////////
 
 
@@ -106,26 +135,8 @@ var b = new schemas.saleItem({
 
 
 io.on('connection', function(socket) {
-  //clients.push(socket.id);   //not necessary but useful for storing users and sending messages to them
-  //io.sockets.connected[socket.id].emit("message-history", messageHistoryObject.getMessages());
 
-/*
-var messageSchema = mongoose.Schema({
-  name: String,
-  message: String,
-  dateSent: { type: Date, default: Date.now }
-});
 
-var messages = mongoose.model('message', messageSchema);
-*/ 
-  //var thePost = require('./models/message.js');
-  //mongoose.model('post', thePost);
-  //var posts = db.model('post');
-  //var posts = mongoose.model('posts', thePost);
-
-  //posts.find({}, [], function(err, calls) { 
-    //console.log(err, calls, calls.length);  //prints out: null [] 0
-  //});
   socket.on('disconnect', function() {
     console.log('someone left');
   });
@@ -178,25 +189,13 @@ var messages = mongoose.model('message', messageSchema);
         }
       });
       console.log('saved');
-// addresses:[
-//   {
-//     street: String,
-//     city: String,
-//     state: String,
-//     zip: String
-//   }],
-//   credit_cards:[
-//   {
-//     type: String,
-//     number: String,
-//     month: String,
-//     date: String
-//   }],
 
 
 
 
   });
+
+
 
    socket.on('authenticate', function(msg) {
     console.log(msg.username);
@@ -211,6 +210,7 @@ var messages = mongoose.model('message', messageSchema);
 
           doc.session_date=timeout;
           doc.save();
+
           console.log("sending authentication data");
           io.emit('authentication data', sessionString);
 
@@ -218,11 +218,15 @@ var messages = mongoose.model('message', messageSchema);
 
       });
    });
+
+
+
    socket.on('test session', function(msg) {
       console.log("is in session?");
       isInSession(msg.username, msg.sessionString, function(res){
         if(res==true){
           console.log('success, in session')
+
         }
         else{
           console.log('not in session');
@@ -231,6 +235,65 @@ var messages = mongoose.model('message', messageSchema);
         });
       console.log("zzzzzz");
    });
+
+   socket.on('post auction', function(msg) {
+      console.log("is in session?");
+      isInSession(msg.username, msg.sessionString, function(res){
+        if(res==true){
+          console.log('success, in session');
+          var auctionToPost =  new schemas.auction({
+          item_name: msg.itemName,
+          category: msg.itemCategory,
+          URL: msg.itemPictureURL,
+          description: msg.description,
+          address:{
+            state:msg.itemLocation
+          },
+          seller: msg.username,
+          finish_time: new Date(Date.now()+60*60*10*1000),//auction ends 10 hours from beginning
+          reserve_price: msg.reservePrice
+          });
+          console.log("saved auction");
+          auctionToPost.save();
+        }
+      });
+    });
+
+          
+
+   socket.on('buy item', function(msg) {
+      console.log("is in session?");
+      isInSession(msg.username, msg.sessionString, function(res){
+        if(res==true){
+           
+          schemas.saleItem.findOne({"_id": msg.id},function(err, doc){
+             if(doc.quantity>0){
+              console.log("quantity is over 0");
+              doc.quantity=doc.quantity-1;
+              doc.save();
+              var saleToSave= new schemas.sale({
+                type: 'sale',// sale or auction
+                item_name: msg.title,
+                seller: msg.seller,
+                username: msg.username,
+                price: msg.price,
+                amount: 1,
+                itemId: msg.id
+              });
+              saleToSave.save();
+              io.emit("sale successful");
+              console.log("order registered");
+             }
+          });
+        }
+        // else{
+        //   console.log('not in session');
+        // }
+      });
+   });
+  
+
+
    socket.on('add comment', function(msg){
     var newComment={
       comment:msg.comment,
@@ -244,6 +307,7 @@ var messages = mongoose.model('message', messageSchema);
       // rating:$("itemReviewRating").val(),
       // id:Url.get.id
    });
+
    socket.on('get item', function(msg) {
     schemas.saleItem.findOne({"_id": msg},function(err, doc){
       io.emit('item info', doc);
@@ -272,20 +336,6 @@ var messages = mongoose.model('message', messageSchema);
   socket.on('button clicked', function(msg) {
 
     io.emit('button was clicked', msg);
-//
-// itemID: String,
-//  description: String,
-//  URL: String,
-//  name: String,
-//     numberOfRatings: number,
-//  rating: number,
-//  dateAdded:
-   
-
-
-
-
-      
       var a = new item({
           itemID: msg.itemID,
           description: msg.description,
@@ -295,7 +345,7 @@ var messages = mongoose.model('message', messageSchema);
           categoryID: msg.categoryID,
           rating: msg.rating
           
-      })
+      });
       console.log(a);
 
       a.save(function(error){
@@ -305,9 +355,10 @@ var messages = mongoose.model('message', messageSchema);
         //   else{
         //     console.log('item add failed');
         //   }
-      })
+      });
   });
-});
+ });
+
 
 
 
