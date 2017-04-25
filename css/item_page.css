@@ -7,8 +7,7 @@ body {
 }
 
 #wrapper{
-	margin-left: auto;
-	margin-right: auto;
+	min-width: 960px;
 }
 
 
@@ -26,6 +25,7 @@ h1, img{
 }
 
 .absolute {
+	position: absolute;
     top: 100px;
     right: 100px;
     background-color: rgb(240, 234, 214);
@@ -69,3 +69,10 @@ textarea {
 #review{
 	padding-left: 70px;
 }
+
+.buyButton{
+	position: absolute;
+	right: 700px;
+	bottom: 200px;
+}
+
