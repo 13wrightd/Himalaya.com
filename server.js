@@ -53,8 +53,56 @@ app.get('/images/*', function (req, res) {
 
 
 
-var item = require('./models/item.js');
-var user = require('./models/user.js');
+var schemas = require('./models/schemas.js');
+var user = require('./models/oldUser.js');
+
+
+var b = new schemas.saleItem({
+ // seller: {
+  //  type: mongoose.Schema.Types.ObjectId},
+  title: 'pancake bunny',
+  description: 'random description ',
+  price: 50,
+  category: 'clothes',
+  quantity: 20,
+  url: 'http://i1.kym-cdn.com/photos/images/original/000/007/445/pancake_bunny.jpg',
+  address:{
+    street: '3501 Sheramy Drive',
+    city: 'Fairview',
+    state: 'PA',
+    zip: 16415
+  },
+  ratings:[
+  {
+    comment:'good item for the most part',
+    star:4
+  },
+  {
+    comment:'great product',
+    star:5
+  },
+  {
+    comment:'not worth it at all',
+    star:1
+  }
+  ]
+});
+// b.save();
+
+// var tempUser= new schemas.user(
+// {
+//   username:'zzzzz',
+//   test:5,
+//   test2:3
+// })
+// tempUser.save(function(error){
+//         // if (error){
+//         //     console.log('item was successfully added');
+//         //   }
+//         //   else{
+//         //     console.log('item add failed');
+//         //   }
+//       });
 
 
 io.on('connection', function(socket) {
@@ -93,32 +141,134 @@ var messages = mongoose.model('message', messageSchema);
         
     });
   });
-  socket.on('add user', function(msg) {
-      var b = new user({
 
-        userName: msg.userName,
+
+  socket.on('add user', function(msg) {
+    console.log(typeof msg.type);
+    console.log(typeof msg.cardNum);
+    console.log(typeof msg.month);
+    console.log(typeof msg.date);
+      var b = new schemas.user({
+        username: msg.userName,
         name: msg.name,
         email: msg.email,
         password: msg.password,
-        phoneNum: msg.phoneNum,
-        street: msg.street,
-        city: msg.city,
-        state: msg.state,
-        zip: msg.zip,
+        phone_numbers: [{number:msg.phoneNum}],
+        
         gender: msg.gender,
         age: msg.age,
-        type: msg.type,
-        cardNum: msg.cardNum,
-        month: msg.month,
-        date: msg.date
-
+        addresses:[{
+          street: msg.street,
+          city: msg.city,
+          state: msg.state,
+          zip: msg.zip
+        }],
+        
+        credit_cards:[{
+          cardtype: msg.type,
+          number: msg.cardNum,
+          month: msg.month,
+          date: msg.date
+        }],
+        is_individual: true,
       });
-      b.save();
+      b.save(function(error){
+        if(error){
+          console.log(error.message);
+        }
+      });
+      console.log('saved');
+// addresses:[
+//   {
+//     street: String,
+//     city: String,
+//     state: String,
+//     zip: String
+//   }],
+//   credit_cards:[
+//   {
+//     type: String,
+//     number: String,
+//     month: String,
+//     date: String
+//   }],
+
+
+
 
   });
 
-  
+   socket.on('authenticate', function(msg) {
+    console.log(msg.username);
+      schemas.user.findOne({username:msg.username},function(err, doc){
+        console.log('got a user');
+        if(doc.password == msg.password){
+          var sessionString=generateID();
+          doc.session_string=sessionString;
 
+          var timeout = Date.now()+1000*60*5;
+          //timeout.setMinutes(timeout.getMinutes() + 5);
+
+          doc.session_date=timeout;
+          doc.save();
+          console.log("sending authentication data");
+          io.emit('authentication data', sessionString);
+
+        }
+
+      });
+   });
+   socket.on('test session', function(msg) {
+      console.log("is in session?");
+      isInSession(msg.username, msg.sessionString, function(res){
+        if(res==true){
+          console.log('success, in session')
+        }
+        else{
+          console.log('not in session');
+        }
+
+        });
+      console.log("zzzzzz");
+   });
+   socket.on('add comment', function(msg){
+    var newComment={
+      comment:msg.comment,
+      star:parseInt(msg.rating)
+    };
+    schemas.saleItem.findByIdAndUpdate(msg.id,{$push: {"ratings": newComment}},function(err, model) {
+        console.log(err);
+    });
+
+      // comment:$("#itemReviewComment").val(),
+      // rating:$("itemReviewRating").val(),
+      // id:Url.get.id
+   });
+   socket.on('get item', function(msg) {
+    schemas.saleItem.findOne({"_id": msg},function(err, doc){
+      io.emit('item info', doc);
+    });
+   });
+   socket.on('search', function(msg){
+    console.log(msg);
+      schemas.saleItem.find({
+        $and:[
+          {$or:[
+            {"title": new RegExp(msg.title,'i')},
+            {"description": new RegExp(msg.title,'i')}
+          ]},
+          {$and:[
+            {"price": {$gte: msg.priceLow}},
+            {"price": {$lte: msg.priceHigh}}
+          ]},
+          {"category": new RegExp(msg.category,'i')}
+
+        ]
+      },function(err, doc){
+        io.emit('search results',doc);
+      });
+
+   });
   socket.on('button clicked', function(msg) {
 
     io.emit('button was clicked', msg);
@@ -166,8 +316,45 @@ var server = http.listen(app.get('port') , function () {
     console.log("Express server listening at %s:%d ", app.get('ip'),app.get('port'));
 });
 
+function generateID() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  }
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+    s4() + '-' + s4() + s4() + s4();
+}
 
+function isInSession(user, sessionString, callback){
+  var currentTime = new Date(Date.now());
+  var inSession=false;
+  var test=schemas.user.findOne({username:user},function(err, doc){
+    if(sessionString=doc.session_string){
+      console.log(doc.session_date);
+      console.log(currentTime);
+      var tempTime=new Date(doc.session_date);
+      console.log('times');
+      console.log(tempTime);
+      console.log(currentTime);
+      if(currentTime<tempTime){
+          console.log("in session");
+          currentTime=currentTime.getTime()+5*1000*60;
+          doc.session_date=new Date(currentTime);
+          doc.save();
+          console.log('returning true');
+          inSession=true;
+          return callback(true);
+      }
+      return callback(false);
+    }
 
+    console.log('sup1');
+    return callback(false);
+  });
+ // console.log(test);
+  console.log('sup2');
+};
 
 
 //javascript class example
@@ -225,6 +412,7 @@ playerList.prototype.add = function(socketId){
   this.players.push(new player(200,200, socketId));
 }
 
+
 playerList.prototype.removeBySocketId = function(socketId){
   for(var i = 0; i<this.players.length;i++){
 
@@ -250,3 +438,19 @@ playerList.prototype.update = function(){
 }
 var players= new playerList();
 */
+
+
+
+
+// // (10) sale report
+// var salesDate = new Date(Date.now()-1000*60*30); 
+// //30 minutes
+
+// var currentDate = new Date(Date.now());
+
+// //should return all sales from up to 30 minutes ago
+// var recentSales = sale.find({"sale_time": {$gt: salesDate}});
+
+// //should return aggregation of auctions from up to 30 minutes ago
+
+// var recentAuctionAggregate = auction.aggregate({$match: {current_bid.bid_date:{$gt: salesDate}}}, {$project: {_id: 0, current_bid.amount: 1}},{$group: {30_min_bid_num: {$sum: 1}, combined_bid_amounts: {$sum: "$current_bid.amount"}}})

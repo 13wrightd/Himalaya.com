@@ -2,10 +2,10 @@
 
 var mongoose = require('mongoose');
 
-var userSchema = mongoose.Schema({
+var oldUserSchema = mongoose.Schema({
 
-	userID: Number,
-	userName: String,
+	oldUserID: Number,
+	oldUserName: String,
 	name: String,
 	email: String,
 	password: String,
@@ -25,8 +25,8 @@ var userSchema = mongoose.Schema({
 
 });
 
-var users = mongoose.model('user', userSchema);
+var oldUsers = mongoose.model('oldUser', oldUserSchema);
 
-module.exports = users;
+module.exports = oldUsers;
 
 
