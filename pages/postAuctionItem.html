@@ -30,6 +30,56 @@
 
   </head>
   <body>
+
+     <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Himalaya</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="../../index.html">Home</a></li>
+      <li class="dropdown" id="category">
+        <a class="dropdown-toggle" data-toggle="dropdown" >Categories
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="../pages/categoriesPage.html?category=apparell">Apparell</a></li>
+          <li><a href="../pages/categoriesPage.html?category=electronic">Electronics</a></li>
+          <li><a href="../pages/categoriesPage.html?category=sports">Sports</a></li>
+          <li><a href="../pages/categoriesPage.html?category=home_improvements">Home Improvements</a></li>
+          <li><a href="../pages/categoriesPage.html?category=appliances">Appliances</a></li>
+          <li><a href="../pages/categoriesPage.html?category=office_supplies">Office Supplies</a></li>
+          <li><a href="../pages/categoriesPage.html?category=groceries">Groceries</a></li>
+          <li><a href="../pages/categoriesPage.html?category=books">Books</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">My Account
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="../pages/accountUpdate.html">Update Information</a></li>
+          <li><a href="#">Order History</a></li>
+          <li><a href="#">Wish List</a></li>
+          <li><a href="/pages/postAuctionItem.html">Post Item for Auction</a></li>
+        </ul>
+      </li>
+    </ul>
+    <form class="navbar-form navbar-left">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search">
+        <div class="input-group-btn">
+          <button class="btn btn-default" type="submit">
+        <i class="glyphicon glyphicon-search"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="../pages/signUp.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="../pages/signIn_page.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+    </div>
+ </nav>
+
   	<div class="container">
             <form class="form-horizontal" role="form">
                 <h2>Post an Item for Auction</h2>
@@ -58,6 +108,71 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for="itemDescriptionURL" class="col-sm-3 control-label">Further Information on Item</label>
+                    <div class="col-sm-9">
+                        <input type="url" id="itemDescriptionURL" placeholder="Enter item url for further description" class="form-control" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="itemLocation" class="col-sm-3 control-label">Shipped from location</label>
+                    <div class="col-sm-9">
+                        <select id="state" class="form-control">
+                            <option value="AL">AL</option>
+                            <option value="AK">AK</option>
+                            <option value="AZ">AZ</option>
+                            <option value="AR">AR</option>
+                            <option value="CA">CA</option>
+                            <option value="CO">CO</option>
+                            <option value="CT">CT</option>
+                            <option value="DE">DE</option>
+                            <option value="DC">DC</option>
+                            <option value="FL">FL</option>
+                            <option value="GA">GA</option>
+                            <option value="HI">HI</option>
+                            <option value="ID">ID</option>
+                            <option value="IL">IL</option>
+                            <option value="IN">IN</option>
+                            <option value="IA">IA</option>
+                            <option value="KS">KS</option>
+                            <option value="KY">KY</option>
+                            <option value="LA">LA</option>
+                            <option value="ME">ME</option>
+                            <option value="MD">MD</option>
+                            <option value="MA">MA</option>
+                            <option value="MI">MI</option>
+                            <option value="MN">MN</option>
+                            <option value="MS">MS</option>
+                            <option value="MO">MO</option>
+                            <option value="MT">MT</option>
+                            <option value="NE">NE</option>
+                            <option value="NV">NV</option>
+                            <option value="NH">NH</option>
+                            <option value="NJ">NJ</option>
+                            <option value="NM">NM</option>
+                            <option value="NY">NY</option>
+                            <option value="NC">NC</option>
+                            <option value="ND">ND</option>
+                            <option value="OH">OH</option>
+                            <option value="OK">OK</option>
+                            <option value="OR">OR</option>
+                            <option value="PA">PA</option>
+                            <option value="RI">RI</option>
+                            <option value="SC">SC</option>
+                            <option value="SD">SD</option>
+                            <option value="TN">TN</option>
+                            <option value="TX">TX</option>
+                            <option value="UT">UT</option>
+                            <option value="VT">VT</option>
+                            <option value="VA">VA</option>
+                            <option value="WA">WA</option>
+                            <option value="WV">WV</option>
+                            <option value="WI">WI</option>
+                            <option value="WY">WY</option>
+                        </select><br>
+
+                    </div>
+                </div>
+                <div class="form-group">
                     <label for="itemCategory" class="col-sm-3 control-label">Choose Item Category</label>
                     <div class="col-sm-9">
                         <select id="itemCategory" class="form-control">
@@ -67,35 +182,106 @@
                                     <option>Formal</option>
                                     <option>Casual</option>
                                     <option>Sport</option>
+                                </optgroup>
                                 <optgroup label="-Women's">
                                     <option>Formal</option>
                                     <option>Casual</option>
                                     <option>Sport</option>
+                                </optgroup>
+                            </optgroup>
                             <optgroup label="Electronics">
                                 <optgroup label="-Compters">
                                     <option>Desktop</option>
                                     <option>Laptops</option>
+                                </optgroup>
                                 <optgroup label="-Media">
                                     <option>Camera</option>
                                     <option>Camcorder</option>
+                                </optgroup>
                                 <optgroup label="-TV & Accessories">
                                     <option>Televisions</option>
                                     <option>Accessories</option>
+                                </optgroup>
+                            </optgroup>
                             <optgroup label="Sports">
                                 <optgroup label="-Baseball">
                                     <option>Bats</option>
                                     <option>Baseballs</option>
                                     <option>Mits</option>
-                                    <option>Other Equipment</option>
+                                    </optgroup>
+                                </optgroup>
                                 <optgroup label="-Golf">
                                     <option>Golf Balls</option>
                                     <option>Clubs</option>
                                     <option>Tees</option>
+                                </optgroup>
                                 <optgroup label="-Exercise">
                                     <option>Equipment</option>
-                                    
+                                </optgroup>
+                            <optgroup label="Home Improvements">
+                                <optgroup label="-Paints">
+                                    <option>Acrylic</option>
+                                    <option>Stain</option>
+                                    <option>Painting Equipment</option>
+                                </optgroup>
+                                <optgroup label="-Tools">
+                                    <option>Hardware Tools</option>
+                                </optgroup>
+                            </optgroup>
+                            <optgroup label="Home Appliances">
+                                    <option>Appliances</option>
+                            </optgroup>
+                            <optgroup label="Rugs">
+                                    <option>Rugs</option>
+                            </optgroup>
+                            <optgroup label="Office">
+                                <optgroup label="-Office Supplies">
+                                    <option>Paper</option>
+                                    <option>Writing Tools</option>
+                                </optgroup>
+                                <optgroup label="-Desks">
+                                    <option>Small Desks</option>
+                                    <option>Large Desks</option>
+                                    <option>Office Chairs</option>
+                                </optgroup>
+                                <optgroup label="-Exercise">
+                                    <option>Equipment</option>
+                                </optgroup>
+                            </optgroup>
+                            <optgroup label="Groceries">
+                                <optgroup label="-Raw">
+                                    <option>Meat</option>
+                                    <option>Vegetables</option>
+                                </optgroup>
+                                <optgroup label="-Microwave">
+                                    <option>Premade Meals</option>
+                                </optgroup>
+                                <optgroup label="-Cutlery">
+                                    <option>Forks</option>
+                                    <option>Knives</option>
+                                    <option>Spoons</option>
+                                </optgroup>
+                            </optgroup>
+                            <optgroup label="Books">
+                                <optgroup label="-Hardcovers">
+                                    <option>Textbooks</option>
+                                    <option>Non-Fiction</option>
+                                    <option>Fiction</option>
+                                </optgroup>
+                                <optgroup label="-Paperback">
+                                    <option>Textbooks</option>
+                                    <option>Non-Fiction</option>
+                                    <option>Fiction</option>
+                                </optgroup>
+                            </optgroup>
+                        </select>
+                        </div>
                     </div>
-                </div>
+                    <div class="form-group">
+                    <div class="col-sm-9 col-sm-offset-3">
+                        <button id='postAuctionButton' type="submit" class="btn btn-primary btn-block">Post Auction Item</button><br><br>
+                    </div>
+                </div>    
             </form> <!-- /form -->
         </div> <!-- ./container -->
   
