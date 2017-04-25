@@ -29,11 +29,16 @@ db.once('open', function(){
 setTimeout(function(){
   //put stuff for querying if time is over limit
   schemas.auction.find({finish_time: {$lt: Date.now()}}, function(err,doc){
-    //for all finished auctions:
+  //for all auctions:
+    //check if current auction bid is equal to or over reserve price
+    //if so, do 1-3 below
     //1. construct and send notification about finished notificationa about auction to all participants
     //2. put finished auction info into saleSchema
     //3. change boolean "finished" to true for auctionSchema
-    var notification = 
+  //if it is not over reserve price, delete the auction from the database
+    for(){
+      
+    }
 
   }, 10000);//every 10 seconds
 
