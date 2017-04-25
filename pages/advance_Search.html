@@ -20,34 +20,35 @@
 
 <body>
 <!-- Nav Bar to Stay on all pages-->
- <nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">Himalaya</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories
+      <li class="active"><a href="../../index.html">Home</a></li>
+      <li class="dropdown" id="category">
+        <a class="dropdown-toggle" data-toggle="dropdown" >Categories
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Apparel</a></li>
-          <li><a href="#">Electronics</a></li>
-          <li><a href="#">Sports</a></li>
-          <li><a href="#">Home Improvement</a></li>
-          <li><a href="#">Office Supplies</a></li>
-          <li><a href="#">Groceries</a></li>
-          <li><a href="#">Books</a></li>
+          <li><a href="../pages/categoriesPage.html?category=apparell">Apparell</a></li>
+          <li><a href="../pages/categoriesPage.html?category=electronic">Electronics</a></li>
+          <li><a href="../pages/categoriesPage.html?category=sports">Sports</a></li>
+          <li><a href="../pages/categoriesPage.html?category=home_improvements">Home Improvements</a></li>
+          <li><a href="../pages/categoriesPage.html?category=appliances">Appliances</a></li>
+          <li><a href="../pages/categoriesPage.html?category=office_supplies">Office Supplies</a></li>
+          <li><a href="../pages/categoriesPage.html?category=groceries">Groceries</a></li>
+          <li><a href="../pages/categoriesPage.html?category=books">Books</a></li>
         </ul>
       </li>
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">My Account
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Update Information</a></li>
+          <li><a href="../pages/accountUpdate.html">Update Information</a></li>
           <li><a href="#">Order History</a></li>
           <li><a href="#">Wish List</a></li>
-          <li><a href="#">Post Item</a></li>
+          <li><a href="/pages/postAuctionItem.html">Post Item for Auction</a></li>
         </ul>
       </li>
     </ul>
@@ -62,8 +63,8 @@
       </div>
     </form>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="signIn_page.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li><a href="../pages/signUp.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="../pages/signIn_page.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
     </ul>
     </div>
  </nav>

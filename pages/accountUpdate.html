@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- stylesheets here -->
+    <link href="../css/accountUpdate.css" rel="stylesheet">
     <!-- Latest compiled and minified CSS -->
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -18,35 +19,35 @@
 
 <body>
 <!-- Nav Bar to Stay on all pages-->
- <nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">Himalaya</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories
+      <li class="active"><a href="../../index.html">Home</a></li>
+      <li class="dropdown" id="category">
+        <a class="dropdown-toggle" data-toggle="dropdown" >Categories
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="pages/categoriesPage.html?category=apparell">Apparell</a></li>
-          <li><a href="pages/categoriesPage.html?category=electronic">Electronics</a></li>
-          <li><a href="pages/categoriesPage.html?category=sports">Sports</a></li>
-          <li><a href="pages/categoriesPage.html?category=home_improvements">Home Improvements</a></li>
-          <li><a href="pages/categoriesPage.html?category=appliances">Appliances</a></li>
-          <li><a href="pages/categoriesPage.html?category=office_supplies">Office Supplies</a></li>
-          <li><a href="pages/categoriesPage.html?category=groceries">Groceries</a></li>
-          <li><a href="pages/categoriesPage.html?category=books">Books</a></li>
+          <li><a href="../pages/categoriesPage.html?category=apparell">Apparell</a></li>
+          <li><a href="../pages/categoriesPage.html?category=electronic">Electronics</a></li>
+          <li><a href="../pages/categoriesPage.html?category=sports">Sports</a></li>
+          <li><a href="../pages/categoriesPage.html?category=home_improvements">Home Improvements</a></li>
+          <li><a href="../pages/categoriesPage.html?category=appliances">Appliances</a></li>
+          <li><a href="../pages/categoriesPage.html?category=office_supplies">Office Supplies</a></li>
+          <li><a href="../pages/categoriesPage.html?category=groceries">Groceries</a></li>
+          <li><a href="../pages/categoriesPage.html?category=books">Books</a></li>
         </ul>
       </li>
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">My Account
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Update Information</a></li>
+          <li><a href="../pages/accountUpdate.html">Update Information</a></li>
           <li><a href="#">Order History</a></li>
           <li><a href="#">Wish List</a></li>
-          <li><a href="#">Post Item</a></li>
+          <li><a href="/pages/postAuctionItem.html">Post Item for Auction</a></li>
         </ul>
       </li>
     </ul>
@@ -61,8 +62,8 @@
       </div>
     </form>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="/../pages/signUp.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="/../pages/signIn_page.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li><a href="../pages/signUp.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="../pages/signIn_page.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
     </ul>
     </div>
  </nav>
@@ -108,7 +109,7 @@
                   <label for="password" class="col-sm-3 control-label">Enter Existing Password</label>
                   <div class="col-sm-9">
                       <input type="password" id="password" placeholder="at least 8 characters" class="form-control">
-                  </div>
+                  </div><br>
                   <label for="newPassword" class="col-sm-3 control-label">Enter New Password</label>
                   <div class="col-sm-9">
                       <input type="newPassword" id="password" placeholder="at least 8 characters" class="form-control">
