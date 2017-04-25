@@ -211,6 +211,7 @@ var messages = mongoose.model('message', messageSchema);
 
           doc.session_date=timeout;
           doc.save();
+
           console.log("sending authentication data");
           io.emit('authentication data', sessionString);
 
@@ -223,6 +224,43 @@ var messages = mongoose.model('message', messageSchema);
       isInSession(msg.username, msg.sessionString, function(res){
         if(res==true){
           console.log('success, in session')
+        }
+        else{
+          console.log('not in session');
+        }
+
+        });
+      console.log("zzzzzz");
+   });
+   socket.on('buy item', function(msg) {
+      console.log("is in session?");
+      isInSession(msg.username, msg.sessionString, function(res){
+        if(res==true){
+           
+          schemas.saleItem.findOne({"_id": msg.id},function(err, doc){
+             if(doc.quantity>0){
+              console.log("quantity is over 0");
+              doc.quantity=doc.quantity-1;
+              doc.save();
+              var saleToSave= new schemas.sale({
+                type: 'sale',// sale or auction
+                item_name: msg.title,
+                seller: msg.seller,
+                username: msg.username,
+                price: msg.price,
+                amount: 1,
+                itemId: msg.id
+              });
+              saleToSave.save();
+              console.log("order registered");
+
+
+
+
+             }
+          });
+
+
         }
         else{
           console.log('not in session');
