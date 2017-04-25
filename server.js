@@ -36,11 +36,8 @@ setTimeout(function(){
     //2. put finished auction info into saleSchema
     //3. change boolean "finished" to true for auctionSchema
   //if it is not over reserve price, delete the auction from the database
-    for(){
-      
-    }
 
-  }, 10000);//every 10 seconds
+  }, 10000000);//every 10 seconds
 
 setTimeout(function(){
   //close all auctions at the end of the day by doing as follows:
@@ -135,6 +132,7 @@ var b = new schemas.saleItem({
 
 
 io.on('connection', function(socket) {
+
   //clients.push(socket.id);   //not necessary but useful for storing users and sending messages to them
   //io.sockets.connected[socket.id].emit("message-history", messageHistoryObject.getMessages());
 
@@ -227,6 +225,7 @@ var messages = mongoose.model('message', messageSchema);
 
   });
 
+
    socket.on('authenticate', function(msg) {
     console.log(msg.username);
       schemas.user.findOne({username:msg.username},function(err, doc){
@@ -248,6 +247,8 @@ var messages = mongoose.model('message', messageSchema);
 
       });
    });
+
+
    socket.on('test session', function(msg) {
       console.log("is in session?");
       isInSession(msg.username, msg.sessionString, function(res){
@@ -273,14 +274,16 @@ var messages = mongoose.model('message', messageSchema);
           category: msg.itemCategory,
           URL: msg.itemPictureURL,
           description: msg.description,
-          // address:{
-          //   state:msg.itemLocation
-          // }
-          address.state: msg.itemLocation,
+          address:{
+            state:msg.itemLocation
+          },
           seller: msg.username,
           finish_time: new Date(Date.now()+60*60*10*1000),//auction ends 10 hours from beginning
           reserve_price: msg.reservePrice
-          })
+          });
+        }
+      });
+    });
 
           
 
@@ -306,22 +309,15 @@ var messages = mongoose.model('message', messageSchema);
               saleToSave.save();
               io.emit("sale successful");
               console.log("order registered");
-
-
-
-
              }
           });
-
-
-
         }
-        else{
-          console.log('not in session');
-        }
-
-        });
+        // else{
+        //   console.log('not in session');
+        // }
+      });
    });
+
 
    socket.on('add comment', function(msg){
     var newComment={
@@ -364,20 +360,6 @@ var messages = mongoose.model('message', messageSchema);
   socket.on('button clicked', function(msg) {
 
     io.emit('button was clicked', msg);
-//
-// itemID: String,
-//  description: String,
-//  URL: String,
-//  name: String,
-//     numberOfRatings: number,
-//  rating: number,
-//  dateAdded:
-   
-
-
-
-
-      
       var a = new item({
           itemID: msg.itemID,
           description: msg.description,
@@ -387,7 +369,7 @@ var messages = mongoose.model('message', messageSchema);
           categoryID: msg.categoryID,
           rating: msg.rating
           
-      })
+      });
       console.log(a);
 
       a.save(function(error){
@@ -397,9 +379,10 @@ var messages = mongoose.model('message', messageSchema);
         //   else{
         //     console.log('item add failed');
         //   }
-      })
+      });
   });
-});
+  });
+
 
 
 
