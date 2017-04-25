@@ -69,16 +69,14 @@
  </nav>
 
 <div id='pageBody'>
- 	<h1 id='title'>Item1</h1>
- 	<img id='image' src= "https://placehold.it/150x80?text=IMAGE" class ="img-responsive" style= "width:40%" alt= "Image">
  	<div class="absolute">
  		<h3>Description:</h3>
     	<div>
-    	<button type="button" data-toggle="collapse" data-target="#descriptions" class="btn btn-info">
- 		Click Me</button>
-      		<div id="descriptions" class="collapse">
-      		Main descriptions
-      		</div>
+    	 <button type="button" data-toggle="collapse" data-target="#descriptions" class="btn btn-info">
+ 		    Click Me</button>
+      	<div id="descriptions" class="collapse">
+      	 Main descriptions
+      	</div>
     	</div>
  		<h3>Categories:</h3>
  		<p id= 'category2'>category</p>
@@ -90,25 +88,24 @@
  		<p id='type'>Auction/Fixed Price</p> 
     <button id='buyButton' type="button" class="btn btn-info">BUY!</button> 
  	</div>
-  <div id='review'>
- 	<!-- <form action> -->
-    Review:<br>
-    <textarea name="comment"  id="itemReviewComment">Write your review here.</textarea>
-    <input style='width:100px' id ='itemReviewRating' type="text" class="form-control" placeholder="rating">
-    <input type="submit" value="Submit" id="submitReview">
-  <!-- </form> -->
-  </div>
+
   <div class="leftAbsolute">
+    <h1 id='title'>Item1</h1>
+    <img id='image' src= "https://placehold.it/150x80?text=IMAGE" class ="img-responsive" style= "width:100%" alt= "Image">
+    <div>
+      Review:<br>
+      <textarea name="comment"  id="itemReviewComment">Write your review here.</textarea>
+      <input style='width:100px' id ='itemReviewRating' type="text" class="form-control" placeholder="rating">
+      <input type="submit" value="Submit" id="submitReview">
+    </div>
     <h3>Reviews:</h3>
     <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#comments">See comments</button>
     <div id="comments" class="collapse">
-     <!-- <h3 class="usernameSize">"Username"</h3> -->
-     <!-- Comments go here. -->
      <ul id='comments' class="list-group"></ul>
     </div>
   </div>
 </div>  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script> 
   <script src="../js/item_page.js"></script><!--Must be last thing on page-->
-	</body>
+</body>
 </html>

@@ -6,7 +6,7 @@ body {
 }
 
 .jumbotron {
-	background-image: url("/images/HimalayanMountains.jpg")
+	background-image: url("../images/HimalayanMountains.jpg")
 }
 
 h1, h3 {

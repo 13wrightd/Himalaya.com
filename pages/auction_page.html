@@ -69,9 +69,8 @@
     </div>
  </nav>
 
- 	<h1>Item1</h1>
- 	<img src= "https://placehold.it/150x80?text=IMAGE" class ="img-responsive" style= "width:40%" alt= "Image">
- 	<div class="absolute">
+  <div id='pageBody'>
+ 	  <div class="absolute">
  		<h3>Description:</h2>
     <div>
     <button type="button" data-toggle="collapse" data-target="#descriptions" class="btn btn-info">
@@ -91,19 +90,22 @@
  		<h3>Rating:</h3>
  		<p>SumNum</p>
     <button id='buyButton' type="button" class="btn btn-info">BID!</button>
- 	</div>
-  <form>
-    Reveiw:<br>
-    <textarea name="comment"  id="itemReviewComment">Write your review here.</textarea>
-    <input type="submit" value="Submit" id="submitReview">
-  </form>
-  <div class="leftAbsolute">
-    <h3>Reviews:</h3>
-    <button type="button" data-toggle="collapse" data-target="#comments" class="btn btn-info">See Comments</button>
-    <div id="comments" class="collapse">
-    <h3 class="usernameSize">"Username"</h3>
-     Comments go here.
+ 	  </div>
+    <div class="leftAbsolute">
+      <h1>Item1</h1>
+      <img src= "https://placehold.it/150x80?text=IMAGE" class ="img-responsive" style= "width:100%" alt= "Image">
+      <h3>Reviews:</h3>
+        <form>
+          Reveiw:<br>
+          <textarea name="comment"  id="itemReviewComment">Write your review here.</textarea>
+          <input type="submit" value="Submit" id="submitReview">
+        </form>
+      <button type="button" data-toggle="collapse" data-target="#comments" class="btn btn-info">See Comments</button>
+      <div id="comments" class="collapse">
+      <h3 class="usernameSize">"Username"</h3>
+        Comments go here.
+      </div>
     </div>
-  </div>
-	</body>
+  </div> 
+</body>
 </html>
