@@ -241,7 +241,7 @@ io.on('connection', function(socket) {
       isInSession(msg.username, msg.sessionString, function(res){
         if(res==true){
           console.log('success, in session');
-          var auctionToPost =  new schemas.saleItem({
+          var auctionToPost =  new schemas.auction({
           item_name: msg.itemName,
           category: msg.itemCategory,
           URL: msg.itemPictureURL,
@@ -253,6 +253,8 @@ io.on('connection', function(socket) {
           finish_time: new Date(Date.now()+60*60*10*1000),//auction ends 10 hours from beginning
           reserve_price: msg.reservePrice
           });
+          console.log("saved auction");
+          auctionToPost.save();
         }
       });
     });
