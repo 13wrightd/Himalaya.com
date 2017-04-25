@@ -304,6 +304,7 @@ var messages = mongoose.model('message', messageSchema);
                 itemId: msg.id
               });
               saleToSave.save();
+              io.emit("sale successful");
               console.log("order registered");
 
 

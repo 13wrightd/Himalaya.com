@@ -34,9 +34,9 @@ $(document).ready(function(){
 			username:localStorage.getItem("username"),
 			sessionString:localStorage.getItem("sessionString"),
 			id:Url.get.id,
-			title:$('#title').val(),
-			price:$('#price').val(),
-			seller:$('#seller').val()
+			title:$('#title').html(),
+			price:$('#price').html(),
+			seller:$('#seller').html()
 		};
 		socket.emit('buy item', msg);
 	});
@@ -44,11 +44,15 @@ $(document).ready(function(){
 
 	socket.on('button was clicked', function(msg){
 	});
+	socket.on('sale successful', function(msg){
+		alert("Sale was successful");
+		$("#quantity").html($("#quantity").html()-1);
+	});
 
 	socket.on('item info', function(msg){
 		$('#category2').html(msg.category);
 		
-		$('#price').html("$"+ msg.price);
+		$('#price').html(msg.price);
 		$('#title').html(msg.title);
 		$('#image').attr("src",msg.url);
 		$('#seller').html(msg.seller);
