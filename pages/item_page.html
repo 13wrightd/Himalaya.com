@@ -18,7 +18,6 @@
     <link href="../css/item_page.css" rel="stylesheet">
   </head>
 <body>
-<div id='wrapper'>
 <!-- Nav Bar to Stay on all pages-->
  <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -69,6 +68,7 @@
     </div>
  </nav>
 
+<div id='pageBody'>
  	<h1 id='title'>Item1</h1>
  	<img id='image' src= "https://placehold.it/150x80?text=IMAGE" class ="img-responsive" style= "width:40%" alt= "Image">
  	<div class="absolute">
@@ -87,7 +87,8 @@
  		<h3>Rating:</h3>
  		<p id ='rating'>SumNum</p>
  		<h3>Type:</h3>
- 		<p id='type'>Auction/Fixed Price</p>
+ 		<p id='type'>Auction/Fixed Price</p> 
+    <button id='buyButton' type="button" class="btn btn-info">BUY!</button> 
  	</div>
   <div id='review'>
  	<!-- <form action> -->
@@ -105,13 +106,9 @@
      <!-- Comments go here. -->
      <ul id='comments' class="list-group"></ul>
     </div>
-
   </div>
+</div>  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script> 
-  <script src="../js/item_page.js"></script>
-  <div class="buyButton">
-  <button id='buyButton' type="button" class="btn btn-info">BUY!</button> 
-  </div>
-  </div>
+  <script src="../js/item_page.js"></script><!--Must be last thing on page-->
 	</body>
 </html>
