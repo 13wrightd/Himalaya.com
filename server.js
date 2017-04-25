@@ -27,6 +27,7 @@ db.once('open', function(){
 });
 
 setTimeout(function(){
+  console.log("called settimeout");
   //put stuff for querying if time is over limit
   schemas.auction.find({finish_time: {$lt: Date.now()}}, function(err,doc){
   //for all auctions:
@@ -36,10 +37,12 @@ setTimeout(function(){
     //2. put finished auction info into saleSchema
     //3. change boolean "finished" to true for auctionSchema
   //if it is not over reserve price, delete the auction from the database
+});
 
   }, 10000000);//every 10 seconds
 
 setTimeout(function(){
+  console.log("called settimeout")
   //close all auctions at the end of the day by doing as follows:
   //for all auctions:
     //check if current auction bid is equal to or over reserve price
@@ -133,26 +136,7 @@ var b = new schemas.saleItem({
 
 io.on('connection', function(socket) {
 
-  //clients.push(socket.id);   //not necessary but useful for storing users and sending messages to them
-  //io.sockets.connected[socket.id].emit("message-history", messageHistoryObject.getMessages());
 
-/*
-var messageSchema = mongoose.Schema({
-  name: String,
-  message: String,
-  dateSent: { type: Date, default: Date.now }
-});
-
-var messages = mongoose.model('message', messageSchema);
-*/ 
-  //var thePost = require('./models/message.js');
-  //mongoose.model('post', thePost);
-  //var posts = db.model('post');
-  //var posts = mongoose.model('posts', thePost);
-
-  //posts.find({}, [], function(err, calls) { 
-    //console.log(err, calls, calls.length);  //prints out: null [] 0
-  //});
   socket.on('disconnect', function() {
     console.log('someone left');
   });
@@ -205,25 +189,12 @@ var messages = mongoose.model('message', messageSchema);
         }
       });
       console.log('saved');
-// addresses:[
-//   {
-//     street: String,
-//     city: String,
-//     state: String,
-//     zip: String
-//   }],
-//   credit_cards:[
-//   {
-//     type: String,
-//     number: String,
-//     month: String,
-//     date: String
-//   }],
 
 
 
 
   });
+
 
 
    socket.on('authenticate', function(msg) {
@@ -247,6 +218,7 @@ var messages = mongoose.model('message', messageSchema);
 
       });
    });
+
 
 
    socket.on('test session', function(msg) {
@@ -317,6 +289,7 @@ var messages = mongoose.model('message', messageSchema);
         // }
       });
    });
+  
 
 
    socket.on('add comment', function(msg){
@@ -332,6 +305,7 @@ var messages = mongoose.model('message', messageSchema);
       // rating:$("itemReviewRating").val(),
       // id:Url.get.id
    });
+
    socket.on('get item', function(msg) {
     schemas.saleItem.findOne({"_id": msg},function(err, doc){
       io.emit('item info', doc);
@@ -381,7 +355,7 @@ var messages = mongoose.model('message', messageSchema);
         //   }
       });
   });
-  });
+ });
 
 
 
