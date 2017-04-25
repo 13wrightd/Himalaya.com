@@ -21,7 +21,7 @@ $(document).ready(function(){
 			priceHigh:$("#priceHigh").val(),
 			ratingLow:$("#ratingLow").val(),
 			ratingHigh:$("#ratingHigh").val(),
-			category:$("#category").val(),
+			category:$("#category2").val(),
 		};
 		if(msg.priceHigh==''){
 			msg.priceHigh=9999999999;
