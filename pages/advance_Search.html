@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+    <link href="../css/signUp.css" rel="stylesheet">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
@@ -72,6 +73,57 @@
     </div>
  </nav>
 
+ <!--<div class="searchlook">
+  <form class="form-horizontal" role="form">
+    <h2>Advance Search</h2>
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Keyword</label>
+        <div class="col-sm-9">
+           <input id='keyword' type="text" name="itemName" class="form-control"><br>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Price Range</label>
+        <div class="col-sm-9">
+           <input type="text" id='priceLow' name="fromPrice" placeholder="From:" class="form-control"><br>
+           <input type="text" id='priceHigh' name="toPrice" placeholder="To:" class="form-control"><br>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Category</label>
+        <div class="col-sm-9">
+           <input type="text" id='category' name="category" class="form-control"><br>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Rating</label>
+        <div class="col-sm-9">
+           <input type="text" id='ratingLow' name="fromRating" class="form-control" placeholder="From:"><br>
+           <input type="text" id='ratingHigh' name="toRating" class="form-control" placeholder="To:"><br>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Sale Type</label>
+        <div class="col-sm-9">
+           <input type="radio" name="sellType" value="auction" >
+        Auction<br>
+        <input type="radio" name="sellType" value="fixedPrice"> Fixed Price<br>
+        <input type="radio" name="sellType" value="both" checked> Both<br>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Search by Description</label>
+        <div class="col-sm-9">
+           <textarea name="description" id="descriptionSearch" class="form-control" rows="4">
+        </textarea><br>
+        </div>
+      </div>
+      <input type="submit" id='submitButton' value="Search" class="btn btn-primary"><br>
+  </form>
+ </div> -->
+
+
+
     <div class="searchLook">
       <div class='position' style="padding-left:70px">
         <h1>Advance Search</h1>
@@ -92,6 +144,7 @@
         <input type="submit" id='submitButton' value="Search"><br>
       </div>
     </div>
+    
     <ul id='resultList' class='list-group'></ul>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
