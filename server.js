@@ -40,6 +40,7 @@ setTimeout(function(){
   var i = doc.length;
   while(i<doc.length){
       if(doc[i].current_bid.amount>=reserve_price){
+        //construct
         var notificationMessage = {
           item_name: doc[i].item_name,
           auctionId: doc[i]._id,
@@ -51,23 +52,41 @@ setTimeout(function(){
           reserve_price: doc[i].reserve_price,
           ending_price: doc[i].current_bid.amount,
           buyer: doc[i].current_bid.username
-          /*
-          notifications:[
-  {
-    item_name: String,
-    itemId: String,
-    auctionId: String,
-    type: String,
-    URL: String,
-    seller: String,
-    start_time: Date,
-    finish_time: Date,
-    reserve_price: String,
-    ending_price: String,
-    buyer: String
-  }
-          */
         }
+        //send to all participated bidders
+        var j = 0;
+        while(doc[i].current_bid[j].username!=null){//iterate the list of bidders for the auction
+            schemas.user.find({username: doc[i].current_bid[j].username}, function(err,doc){
+                doc.notifications.push(notificationMessage);
+
+                doc.save(function (err) {
+                 if (err) return handleError(err)
+                 console.log('Success! notification');
+                });
+
+            }
+        }
+
+      //2. put finished auction info into saleSchema
+      var finishedSale = new schemas.auction({
+          type: "auction",
+          item_name: doc[i].item_name,
+          seller: doc[i].seller,
+          username: doc[i].current_bid.username,
+          price: doc[i].current_bid.amount,
+          amount: 1,
+          itemId: doc[i]._id 
+      })
+        finishedSale.save(function(error){
+          if(error){
+            console.log(error.message);
+          }
+        });
+        console.log('saved');
+
+      //3. change boolean "finished" to true for auctionSchema
+      doc[i].
+
       }
       else{
         //delete auction
@@ -105,6 +124,7 @@ setTimeout(function(){
 
     */
   }
+
 });
 
   }, 10000000);//every 10 seconds
