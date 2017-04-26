@@ -24,7 +24,7 @@
       <a class="navbar-brand" href="#">Himalaya</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="../../index.html">Home</a></li>
+      <li class="active"><a href="../index.html">Home</a></li>
       <li class="dropdown" id="category">
         <a class="dropdown-toggle" data-toggle="dropdown" >Categories
         <span class="caret"></span></a>
@@ -40,13 +40,13 @@
         </ul>
       </li>
       <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">My Account
+        <a class="dropdown-toggle" data-toggle="dropdown">My Account
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="../pages/accountUpdate.html">Update Information</a></li>
-          <li><a href="#">Order History</a></li>
+          <li><a href="../pages/orderHistoryPage.html">Order History</a></li>
           <li><a href="#">Wish List</a></li>
-          <li><a href="/pages/postAuctionItem.html">Post Item for Auction</a></li>
+          <li><a href="../pages/postAuctionItem.html">Post Item for Auction</a></li>
         </ul>
       </li>
     </ul>
@@ -60,12 +60,16 @@
         </div>
       </div>
     </form>
+    <ul class="nav navbar-nav">
+      <li><a href="../pages/advance_Search.html"><u>Advanced Search</u></a></li>
+    </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="../pages/signUp.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
       <li><a href="../pages/signIn_page.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
     </ul>
     </div>
  </nav>
+
 
   <body>
   	<div class="container">
@@ -235,12 +239,13 @@
         </div> <!-- ./container -->
   
 
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <!-- <script src="https://code.jquery.com/jquery-1.11.1.js"></script> -->
+ <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 <!-- javascript down here, import jquery first ^        -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
-    <script src="../js/signUp.js"></script>
+
+     <script src="/js/main.js"></script>
   </body>
 </html>
