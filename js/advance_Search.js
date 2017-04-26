@@ -35,6 +35,7 @@ $(document).ready(function(){
 
 	socket.on('search results', function(msg){
 		console.log(msg);
+		$('#resultList').empty();
 		jQuery.each( msg, function( i, val ) {
 			//var imgString='<img src='
    			//$("#searchList").append("<li  class='list-group-item'>"+ val.comment+'<span style="float:right">'+val.star+'</span>'+'</li>');
