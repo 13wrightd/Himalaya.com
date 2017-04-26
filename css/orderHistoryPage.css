@@ -1,6 +1,6 @@
 body {
     background-color: rgb(204,222,249) !important;
 }
-*[role="form"] {
-    max-width: 530px;
+.container {
+
 }
