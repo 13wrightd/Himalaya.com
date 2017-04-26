@@ -37,6 +37,74 @@ setTimeout(function(){
     //2. put finished auction info into saleSchema
     //3. change boolean "finished" to true for auctionSchema
   //if it is not over reserve price, delete the auction from the database
+  var i = doc.length;
+  while(i<doc.length){
+      if(doc[i].current_bid.amount>=reserve_price){
+        var notificationMessage = {
+          item_name: doc[i].item_name,
+          auctionId: doc[i]._id,
+          type: "auction",
+          URL: doc[i].URL,
+          seller: doc[i].seller,
+          start_time: doc[i].start_time,
+          finish_time: doc[i].finish_time,
+          reserve_price: doc[i].reserve_price,
+          ending_price: doc[i].current_bid.amount,
+          buyer: doc[i].current_bid.username
+          /*
+          notifications:[
+  {
+    item_name: String,
+    itemId: String,
+    auctionId: String,
+    type: String,
+    URL: String,
+    seller: String,
+    start_time: Date,
+    finish_time: Date,
+    reserve_price: String,
+    ending_price: String,
+    buyer: String
+  }
+          */
+        }
+      }
+      else{
+        //delete auction
+        doc[i].remove();
+      }
+
+
+      i++;
+    /*
+    item_name: String,
+  category: String,
+  URL: String,
+  description: String,
+  address:{
+    street: String,
+    city: String,
+    state: String,
+    zip: Number
+  },
+  seller: String,
+  start_time: { type: Date, default: Date.now },
+  finish_time: Date,
+  reserve_price: Number,
+  current_bid: {
+    username: String,
+    amount: Number
+  },
+  //array of bidders that are notified at end of auction
+  bids:[
+  {
+    username: String,
+    amount: Number
+  }
+  ]
+
+    */
+  }
 });
 
   }, 10000000);//every 10 seconds
