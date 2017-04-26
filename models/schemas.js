@@ -5,7 +5,6 @@ var mongoose = require('mongoose');
 
 //TJ stuff April 16, 2017 starts here
 
-
 //users schema (made up of individuals(who can buy and sell) and suppliers(who can only sell))
 var userSchema = mongoose.Schema({
 	username: String,
@@ -41,14 +40,16 @@ var userSchema = mongoose.Schema({
 	notifications:[
 	{
 		item_name: String,
+		itemId: String,
+		auctionId: String,
+		type: String,
 		URL: String,
-		seller: {
-		type: mongoose.Schema.Types.ObjectId
-		},
+		seller: String,
 		start_time: Date,
 		finish_time: Date,
 		reserve_price: String,
-		ending_price: String
+		ending_price: String,
+		buyer: String
 	}
 	],
 	//individuals
@@ -86,8 +87,7 @@ var categoriesSchema =  mongoose.Schema({
 var categories = mongoose.model('categories', categoriesSchema);
 
 var saleItemSchema =  mongoose.Schema({
-	seller: {
-		type: mongoose.Schema.Types.ObjectId},
+	seller: String,
 	description: String,
 	title: String,
 	url: String,
@@ -119,24 +119,28 @@ var auctionSchema = mongoose.Schema({
 	item_name: String,
 	category: String,
 	URL: String,
+	description: String,
 	address:{
 		street: String,
 		city: String,
 		state: String,
 		zip: Number
 	},
-	seller: {
-		type: mongoose.Schema.Types.ObjectId},
+	seller: String,
 	start_time: { type: Date, default: Date.now },
 	finish_time: Date,
 	reserve_price: Number,
 	current_bid: {
-		amount: Number,
-		bidder: {type: mongoose.Schema.Types.ObjectId}
+		username: String,
+		amount: Number
 	},
 	//array of bidders that are notified at end of auction
-	bidders:[{type: mongoose.Schema.Types.ObjectId,
-		unique: true, amount: Number}]
+	bids:[
+	{
+		username: String,
+		amount: Number
+	}
+	]
 
 
 });
@@ -147,14 +151,12 @@ var auction = mongoose.model('auction', auctionSchema);
 var saleSchema =  mongoose.Schema({
 	type: String,// sale or auction
 	item_name: String,
-	URL: String,
-	seller: {
-		type: mongoose.Schema.Types.ObjectId},
-	buyer: {
-		type: mongoose.Schema.Types.ObjectId},
+	seller: String,
+	username: String,
 	sale_time: { type: Date, default: Date.now },
 	price: Number,
-	amount: Number
+	amount: Number,
+	itemId: String
 });
 
 var sale = mongoose.model('sale',saleSchema);

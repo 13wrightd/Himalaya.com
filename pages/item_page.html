@@ -17,7 +17,6 @@
     <!-- Specific CSS file -->
     <link href="../css/item_page.css" rel="stylesheet">
   </head>
-
 <body>
 <!-- Nav Bar to Stay on all pages-->
  <nav class="navbar navbar-inverse">
@@ -72,44 +71,47 @@
     </div>
  </nav>
 
- 	<h1 id='title'>Item1</h1>
- 	<img id='image' src= "https://placehold.it/150x80?text=IMAGE" class ="img-responsive" style= "width:40%" alt= "Image">
+<div id='pageBody'>
  	<div class="absolute">
- 		<h3>Description:</h2>
+ 		<h3>Description:</h3>
     	<div>
-    	<button type="button" data-toggle="collapse" data-target="#descriptions" class="btn btn-info">
+    	<button type="button" data-toggle="collapse" data-target="#description" class="btn btn-info">
  		Click Me</button>
       		<div id="description" class="collapse">
       		Main descriptions
       		</div>
     	</div>
  		<h3>Categories:</h3>
- 		<p id= 'category'>category</p>
+ 		<p id= 'category2'>category</p>
  		<h3>Price:</h3>
- 		<p id = 'price' ></p>
+ 		<p id ='price'></p>
+    <h3>seller:</h3>
+    <p id = 'seller' ></p>
+    <h3>stock:</h3>
+    <p id = 'quantity' ></p>
  		<h3>Rating:</h3>
  		<p id ='rating'>SumNum</p>
  		<h3>Type:</h3>
- 		<p id='type'>Auction/Fixed Price</p>
+ 		<p id='type'>Auction/Fixed Price</p> 
+    <button id='buyButton' type="button" class="btn btn-info">BUY!</button> 
  	</div>
-  <div id='review'>
- 	<!-- <form action> -->
-    Review:<br>
-    <textarea name="comment"  id="itemReviewComment">Write your review here.</textarea>
-    <input style='width:100px' id ='itemReviewRating' type="text" class="form-control" placeholder="rating">
-    <input type="submit" value="Submit" id="submitReview">
-  <!-- </form> -->
-  </div>
+
   <div class="leftAbsolute">
+    <h1 id='title'>Item1</h1>
+    <img id='image' src= "https://placehold.it/150x80?text=IMAGE" class ="img-responsive" style= "width:100%" alt= "Image">
+    <div>
+      Review:<br>
+      <textarea name="comment"  id="itemReviewComment">Write your review here.</textarea>
+      <input style='width:100px' id ='itemReviewRating' type="text" class="form-control" placeholder="rating">
+      <input type="submit" value="Submit" id="submitReview">
+    </div>
     <h3>Reviews:</h3>
     <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#comments">See comments</button>
     <div id="comments" class="collapse">
-     <!-- <h3 class="usernameSize">"Username"</h3> -->
-     <!-- Comments go here. -->
      <ul id='comments' class="list-group"></ul>
     </div>
-
   </div>
+<<<<<<< HEAD
   <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 <!-- javascript down here, import jquery first ^        -->
@@ -117,4 +119,10 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
 	</body>
+=======
+</div>  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script> 
+  <script src="../js/item_page.js"></script><!--Must be last thing on page-->
+</body>
+>>>>>>> dd1dc36b8160d51a9d5fa188679b1e4120081d71
 </html>
