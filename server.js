@@ -84,8 +84,6 @@ setTimeout(function(){
         });
         console.log('saved');
 
-      //3. change boolean "finished" to true for auctionSchema
-      doc[i].
 
       }
       else{
@@ -95,39 +93,17 @@ setTimeout(function(){
 
 
       i++;
-    /*
-    item_name: String,
-  category: String,
-  URL: String,
-  description: String,
-  address:{
-    street: String,
-    city: String,
-    state: String,
-    zip: Number
-  },
-  seller: String,
-  start_time: { type: Date, default: Date.now },
-  finish_time: Date,
-  reserve_price: Number,
-  current_bid: {
-    username: String,
-    amount: Number
-  },
-  //array of bidders that are notified at end of auction
-  bids:[
-  {
-    username: String,
-    amount: Number
-  }
-  ]
-
-    */
   }
 
 });
 
   }, 10000000);//every 10 seconds
+
+/*
+});
+
+  }, 10000000);//every 10 seconds
+*/
 
 setTimeout(function(){
   console.log("called settimeout")
