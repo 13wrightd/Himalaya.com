@@ -11,9 +11,21 @@ Url = {
         return vars;
     }
 };
-
+var itemInfo;
 $(document).ready(function(){
-	
+	$('#wishButton').click(function(){
+		console.log('sup');
+		var t=JSON.parse(localStorage.getItem('wishlist'));
+		if(t){
+			t.push(itemInfo);
+
+		}
+		else{
+			t=[itemInfo];
+		}
+		localStorage.setItem('wishlist',  JSON.stringify(t));
+
+	});
 	
 	socket.emit('get item', Url.get.id);
 		
@@ -27,11 +39,7 @@ $(document).ready(function(){
 		setTimeout(function(){
 			socket.emit('get item', Url.get.id);
 		},500);
-	$('#wishButton').click(function(){
-		var msg= {
-			
-		}
-	});
+
 
 	});
 	$('#buyButton').click(function(){
@@ -55,6 +63,7 @@ $(document).ready(function(){
 	});
 
 	socket.on('item info', function(msg){
+		itemInfo=msg;
 		$('#category2').html(msg.category);
 		
 		$('#price').html(msg.price);
@@ -73,7 +82,7 @@ $(document).ready(function(){
 			rating+=val.star;
 			console.log('sum '+rating);
 			count+=1;
-  			$("#comments").append("<li style='width:50%' class='list-group-item'>"+ val.comment+'<span style="float:right">'+val.star+'</span>'+'</li>');
+  			$("#comments").append("<li style='width:100%' class='list-group-item'>"+ val.comment+'<span style="float:right">'+val.star+'</span>'+'</li>');
 		});
 		console.log(rating);
 		if(count>0){
