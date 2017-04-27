@@ -412,6 +412,14 @@ io.on('connection', function(socket) {
       io.emit('item info', doc);
     });
    });
+   socket.on('get auction', function(msg) {
+    console.log(msg);
+    console.log('get auction');
+    schemas.auction.findOne({"_id": msg},function(err, doc){
+      console.log(doc);
+      io.emit('auction info', doc);
+    });
+   });
    socket.on('search', function(msg){
     console.log(msg);
       schemas.saleItem.find({

@@ -15,7 +15,8 @@ Url = {
 $(document).ready(function(){
 	
 	
-	socket.emit('get item', Url.get.id);
+	socket.emit('get auction', Url.get.id);
+	console.log('get auction');
 		
 	$('#submitReview').click(function(){
 		var msg= {
@@ -29,7 +30,7 @@ $(document).ready(function(){
 		},500);
 
 	});
-	$('#buyButton').click(function(){
+	$('#bidButton').click(function(){
 		var msg= {
 			username:localStorage.getItem("username"),
 			sessionString:localStorage.getItem("sessionString"),
@@ -38,9 +39,12 @@ $(document).ready(function(){
 			price:$('#price').html(),
 			seller:$('#seller').html()
 		};
-		socket.emit('buy item', msg);
+		//socket.emit('bid item', msg); //fix later bid
+		console.log($('#currentPrice').html());
+		var a=parseInt($('#currentPrice').html());
+		$('#currentPrice').html(a+2);
+		// $('#currentprice').html($('#currentprice').html()+5);
 	});
-
 
 	socket.on('button was clicked', function(msg){
 	});
@@ -49,14 +53,20 @@ $(document).ready(function(){
 		$("#quantity").html($("#quantity").html()-1);
 	});
 
-	socket.on('item info', function(msg){
+	socket.on('auction info', function(msg){
+		console.log("got info");
 		$('#category2').html(msg.category);
 		
-		$('#price').html(msg.price);
-		$('#title').html(msg.title);
-		$('#image').attr("src",msg.url);
+		if (typeof msg.current_bid !== 'undefined') {
+			$('#currentPrice').html(msg.current_bid.amount);
+		}
+		else{
+			$('#currentPrice').html('1');
+		}
+		$('#title').html(msg.item_name);
+		$('#image').attr("src",msg.URL);
 		$('#seller').html(msg.seller);
-		$('#quantity').html(msg.quantity);
+		$('#closingTime').html((new Date(msg.finish_time)).toLocaleString());
 
 		$('#description').html(msg.description);
 		var count=0;
