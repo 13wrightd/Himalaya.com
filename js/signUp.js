@@ -35,6 +35,7 @@ $(document).ready(function(){
   		zip: $('#zip').val(),
   		gender: $('#gender').val(),
   		age: $('#age').val(),
+  		income: $('#income').val(),
   		type: $('#type').val(),
   		cardNum: $('#cardNum').val(),
   		month: $('#month').val(),
