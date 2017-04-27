@@ -37,7 +37,7 @@ $(document).ready(function(){
 			//var imgString='<img src='
    			//$("#searchList").append("<li  class='list-group-item'>"+ val.comment+'<span style="float:right">'+val.star+'</span>'+'</li>');
 	//style='width:50%'
-	$('#resultList').append("<li  class='valign-wrapper col-sm-6 list-group-item'>"+"<a href='item_page.html?id="+msg[i]._id+"'> <img class='valign'"+' style="width:20%; " src="' + msg[i].url + '" /> '  +msg[i].title+"<span style='float:right'>$"+msg[i].price+'</span><a></li>');
+	$('#resultList').append("<li  class='valign-wrapper list-group-item'>"+"<a href='item_page.html?id="+msg[i]._id+"'> <img class='valign'"+' style="width:20%; " src="' + msg[i].url + '" /> '  +msg[i].title+"<span style='float:right'>$"+msg[i].price+'</span><a></li>');
 
 			onClick='item_page.html?id="+msg[i]._id+"'
 	});
