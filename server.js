@@ -357,7 +357,14 @@ io.on('connection', function(socket) {
         }
       });
     });
+  socket.on('get sales', function(msg) {
+    schemas.sale.find({username:msg
+        
+      },function(err, doc){
+        io.emit('sales',doc);
+      });
 
+  });
 
    socket.on('post item', function(msg) {
       console.log("is in session?");
