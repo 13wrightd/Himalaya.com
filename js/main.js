@@ -14,7 +14,14 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
+
+	$('#searchBarButton').click(function(){
+		window.location.href = "/pages/searchBarPage.html?searchBar="+$("#searchBar").val();
+	});
+
 	console.log('document ready');
+
+//This is the javascript for searchbar at the top of the main page
 
 
 // itemID: String,
