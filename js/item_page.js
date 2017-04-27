@@ -73,7 +73,7 @@ $(document).ready(function(){
 			rating+=val.star;
 			console.log('sum '+rating);
 			count+=1;
-  			$("#comments").append("<li style='width:50%' class='list-group-item'>"+ val.comment+'<span style="float:right">'+val.star+'</span>'+'</li>');
+  			$("#comments").append("<li style='width:100%' class='list-group-item'>"+ val.comment+'<span style="float:right">'+val.star+'</span>'+'</li>');
 		});
 		console.log(rating);
 		if(count>0){
