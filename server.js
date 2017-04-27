@@ -358,6 +358,49 @@ io.on('connection', function(socket) {
       });
     });
 
+
+   socket.on('post item', function(msg) {
+      console.log("is in session?");
+      isInSession(msg.username, msg.sessionString, function(res){
+        if(res==true){
+          console.log('success, in session');
+          var item= new schemas.saleItem({
+         // seller: {
+          //  type: mongoose.Schema.Types.ObjectId},
+          title: msg.itemName,
+          description: msg.description,
+          price: msg.fixedPrice,
+          category: msg.itemCategory,
+          quantity: 50,
+          url: msg.itemPictureURL,
+          address:{
+            street: '',
+            city: '',
+            state: msg.itemLocation,
+            zip: ''
+          },
+          ratings:[]
+        });
+
+      // itemName: $('#itemName').val(),
+      // description: $('#exampleTextarea').val(),
+      // fixedPrice: $('#fixedPrice').val(),
+      // itemPictureURL: $('#itemPicture').val(),
+      // //itemDescriptionURL: $('#itemDescriptionURL').val(),
+      // itemCategory: $('#itemCategory').val(),
+      // username: localStorage.getItem('username'),
+      // sessionString: localStorage.getItem('sessionString'),
+      // itemLocation: $('#itemLocation').val()
+
+
+          console.log("saved auction");
+          item.save();
+        }
+      });
+    });
+
+
+
           
 
    socket.on('buy item', function(msg) {
@@ -441,6 +484,7 @@ io.on('connection', function(socket) {
 
    });
   socket.on('search categories', function(msg) {
+
     schemas.saleItem.find({"category": { $in : msg }},function(err, doc){
         io.emit('category results', doc);
       });

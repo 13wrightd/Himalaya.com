@@ -24,7 +24,7 @@ $(document).ready(function(){
 	}
 	
   		console.log(msg);
-		socket.emit('post auction', msg);
+		socket.emit('post item', msg);
 	});
 	
 });
