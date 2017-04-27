@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
     <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  
     <!-- Specific CSS file -->
     <link href="../css/item_page.css" rel="stylesheet">
   </head>
@@ -42,11 +42,11 @@
     </ul>
     <form class="navbar-form navbar-left">
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search">
+        <input type="text" id="searchBar" class="form-control" placeholder="Search">
         <div class="input-group-btn">
-          <button class="btn btn-default" type="submit">
+          <a id="searchBarButton" class="btn btn-default" type="button">
         <i class="glyphicon glyphicon-search"></i>
-          </button>
+          </a>
         </div>
       </div>
     </form>
@@ -100,5 +100,6 @@
   <footer>
     <p>&copy; Himalaya.com</p>
   </footer> 
+  <script src="/js/main.js"></script>
 </body>
 </html>
