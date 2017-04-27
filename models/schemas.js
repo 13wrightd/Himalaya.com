@@ -42,7 +42,7 @@ var userSchema = mongoose.Schema({
 		item_name: String,
 		itemId: String,
 		auctionId: String,
-		type: String,
+		type1: String,
 		URL: String,
 		seller: String,
 		start_time: Date,
