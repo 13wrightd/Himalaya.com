@@ -114,7 +114,7 @@ console.log("end of function0")
 
 
 console.log("end of function")
-}, 10000);//every 10 seconds
+}, 1000000);//every 10 seconds
 
 /*
 });
