@@ -27,132 +27,130 @@ db.once('open', function(){
 });
 
 
-setInterval(function(){
-  console.log("called settimeout");
-  //put stuff for querying if time is over limit
+// setInterval(function(){
+//   console.log("called settimeout");
+//   //put stuff for querying if time is over limit
 
-//if(schemas.auction.findOne({finish_time: {$lt: Date.now()}})!=null){
+// //if(schemas.auction.findOne({finish_time: {$lt: Date.now()}})!=null){
 
-  schemas.auction.find({finish_time: {$lt: Date.now()}}, function(err,doc){
-    console.log("have results for finding auctions");
-  //for all auctions:
-    //check if current auction bid is equal to or over reserve price
-    //if so, do 1-3 below
-    //1. construct and send notification about finished notificationa about auction to all participants
-    //2. put finished auction info into saleSchema
-    //3. change boolean "finished" to true for auctionSchema
-  //if it is not over reserve price, delete the auction from the database
-  var i = 0;
-  console.log("doc length is"+doc.length)
-  while(i<doc.length){
-    console.log("in while loop");
-    console.log("current bid amount is"+doc[i].current_bid.amount)
-    console.log("reserve price is"+doc[i].reserve_price)
-      if(doc[i].current_bid.amount>=doc[i].reserve_price){
-        console.log("successful auction");
-        //construct
-        var notificationMessage = {
-          item_name: doc[i].item_name,
-          auctionId: doc[i]._id,
-          type1: "auction",
-          URL: doc[i].URL,
-          seller: doc[i].seller,
-          start_time: doc[i].start_time,
-          finish_time: doc[i].finish_time,
-          reserve_price: doc[i].reserve_price,
-          ending_price: doc[i].current_bid.amount,
-          buyer: doc[i].current_bid.username
-        }
-        //send to all participated bidders
-        var j = 0;
-        console.log(doc[i].bids[j].username);
-        console.log("checking to see if we can notify bidders")
-        while(doc[i].bids[j]!=null&&doc[i].bids[j].username!=null){//iterate the list of bidders for the auction
-        //for (var j in doc[i].bids){
-            console.log('here');
-            console.log(doc[i].bids[j].username);
-
-
-            // schemas.user.findOneAndUpdate({username: doc[i].bids[j].username}, {$push: {'notifications':notificationMessage}},function(err, doc){
-            //   console.log('findone and update');
-            // });
-
-             schemas.user.findOne({username: doc[i].bids[j].username}, function(err,docs){
-
-               docs.notifications.push(notificationMessage);
-               docs.save();
-             });
-
-          //     console.log("updating this users notifications");
-          //     //console.log(docs);
-          //     console.log(notificationMessage);
-          //       docs.notifications.push(notificationMessage);
-          //       console.log(docs);
-
-          //      // docs.age=27;
-          // //  schemas.user.update({username: doc[i].bids[j].username}, {age:28});
+//   schemas.auction.find({finish_time: {$lt: Date.now()}}, function(err,doc){
+//     console.log("have results for finding auctions");
+//   //for all auctions:
+//     //check if current auction bid is equal to or over reserve price
+//     //if so, do 1-3 below
+//     //1. construct and send notification about finished notificationa about auction to all participants
+//     //2. put finished auction info into saleSchema
+//     //3. change boolean "finished" to true for auctionSchema
+//   //if it is not over reserve price, delete the auction from the database
+//   var i = 0;
+//   console.log("doc length is"+doc.length)
+//   while(i<doc.length){
+//     console.log("in while loop");
+//     console.log("current bid amount is"+doc[i].current_bid.amount)
+//     console.log("reserve price is"+doc[i].reserve_price)
+//       if(doc[i].current_bid.amount>=doc[i].reserve_price){
+//         console.log("successful auction");
+//         //construct
+//         var notificationMessage = {
+//           item_name: doc[i].item_name,
+//           auctionId: doc[i]._id,
+//           type1: "auction",
+//           URL: doc[i].URL,
+//           seller: doc[i].seller,
+//           start_time: doc[i].start_time,
+//           finish_time: doc[i].finish_time,
+//           reserve_price: doc[i].reserve_price,
+//           ending_price: doc[i].current_bid.amount,
+//           buyer: doc[i].current_bid.username
+//         }
+//         //send to all participated bidders
+//         var j = 0;
+//         console.log(doc[i].bids[j].username);
+//         console.log("checking to see if we can notify bidders")
+//         while(doc[i].bids[j]!=null&&doc[i].bids[j].username!=null){//iterate the list of bidders for the auction
+//         //for (var j in doc[i].bids){
+//             console.log('here');
+//             console.log(doc[i].bids[j].username);
 
 
+//             // schemas.user.findOneAndUpdate({username: doc[i].bids[j].username}, {$push: {'notifications':notificationMessage}},function(err, doc){
+//             //   console.log('findone and update');
+//             // });
 
-//}
+//              schemas.user.findOne({username: doc[i].bids[j].username}, function(err,docs){
+
+//                docs.notifications.push(notificationMessage);
+//                docs.save();
+//              });
+
+//           //     console.log("updating this users notifications");
+//           //     //console.log(docs);
+//           //     console.log(notificationMessage);
+//           //       docs.notifications.push(notificationMessage);
+//           //       console.log(docs);
+
+//           //      // docs.age=27;
+//           // //  schemas.user.update({username: doc[i].bids[j].username}, {age:28});
 
 
 
-
-             // });
-            j++;
-        }
-
-      //2. put finished auction info into saleSchema
-      var finishedSale = new schemas.sale({
-          type: "auction",
-          item_name: doc[i].item_name,
-          seller: doc[i].seller,
-          username: doc[i].current_bid.username,
-          price: doc[i].current_bid.amount,
-          amount: 1,
-          itemId: doc[i]._id 
-      })
-      console.log("saving new finished sale");
-        finishedSale.save(function(error){
-          if(error){
-            console.log(error.message);
-          }
-        });
-
-        console.log('saved');
+// //}
 
 
-      }
-      else{
-        //delete auction
-        console.log("removing auction");
-        doc[i].remove();
-      }
 
 
-      i++;
-      console.log("end of first while loop");
-  }
-console.log("end of function0")
-});
+//              // });
+//             j++;
+//         }
+
+//       //2. put finished auction info into saleSchema
+//       var finishedSale = new schemas.sale({
+//           type: "auction",
+//           item_name: doc[i].item_name,
+//           seller: doc[i].seller,
+//           username: doc[i].current_bid.username,
+//           price: doc[i].current_bid.amount,
+//           amount: 1,
+//           itemId: doc[i]._id 
+//       })
+//       console.log("saving new finished sale");
+//         finishedSale.save(function(error){
+//           if(error){
+//             console.log(error.message);
+//           }
+//         });
+
+//         console.log('saved');
 
 
-//}
+//       }
+//       else{
+//         //delete auction
+//         console.log("removing auction");
+//         doc[i].remove();
+//       }
 
 
-console.log("end of function")
-}, 10000);//every 10 seconds
+//       i++;
+//       console.log("end of first while loop");
+//   }
+// console.log("end of function0")
+// });
 
-/*
-});
 
-  }, 10000000);//every 10 seconds
-*/
+// //}
+
+
+// console.log("end of function")
+// }, 10000);//every 10 seconds
+
+
+
+
 
 setInterval(function(){
 }, 1000*60*60*24);//every 24 hours
-////////////////////////////////////
+
 
 
 
