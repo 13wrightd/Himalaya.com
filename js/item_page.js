@@ -11,9 +11,21 @@ Url = {
         return vars;
     }
 };
-
+var itemInfo;
 $(document).ready(function(){
-	
+	$('#wishButton').click(function(){
+		console.log('sup');
+		var t=JSON.parse(localStorage.getItem('wishlist'));
+		if(t){
+			t.push(itemInfo);
+
+		}
+		else{
+			t=[itemInfo];
+		}
+		localStorage.setItem('wishlist',  JSON.stringify(t));
+
+	});
 	
 	socket.emit('get item', Url.get.id);
 		
@@ -27,11 +39,7 @@ $(document).ready(function(){
 		setTimeout(function(){
 			socket.emit('get item', Url.get.id);
 		},500);
-	$('#wishButton').click(function(){
-		var msg= {
-			
-		}
-	});
+
 
 	});
 	$('#buyButton').click(function(){
@@ -55,6 +63,7 @@ $(document).ready(function(){
 	});
 
 	socket.on('item info', function(msg){
+		itemInfo=msg;
 		$('#category2').html(msg.category);
 		
 		$('#price').html(msg.price);
