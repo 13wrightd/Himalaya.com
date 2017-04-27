@@ -33,6 +33,7 @@ body {
 	position: relative;
 	/*background-color: rgb(255, 255, 255);*/
 	margin: 0 auto;
+	padding-bottom: 20px;
 }
 
 
@@ -72,6 +73,7 @@ textarea {
 	position: absolute;
 	padding-left: 60px;
 	padding-right: 70px;
+	padding-bottom: 20px;
 	width: 50%;
 	left: 30px;
 }
