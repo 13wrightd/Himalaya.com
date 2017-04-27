@@ -32,7 +32,7 @@
         <ul class="dropdown-menu">
           <li><a href="../pages/accountUpdate.html">Update Information</a></li>
           <li><a href="../pages/orderHistoryPage.html">Order History</a></li>
-          <li><a href="#">Wish List</a></li>
+          <li><a href="../pages/wishlist.html">Wish List</a></li>
           <li><a href="../pages/postAuctionItem.html">Post Item for Auction</a></li>
           <li><a href="../pages/postFixedPriceItem.html">Post Fixed Price Item </a></li>
         </ul>
@@ -172,6 +172,12 @@
                     	<input type="number" id="age" placeholder="How old are you?" class="form-control" >
                     </div>
                 </div>
+                <div class="form-group">
+                    <label for="income" class="col-sm-3 control-label">Annual Income</label>
+                    <div class="col-sm-9">
+                      <input type="number" id="income" placeholder="Annual Income" class="form-control" >
+                    </div>
+                </div>
      			<div class="form-group">
                     <label for="cardinfo" class="col-sm-3 control-label">Credit Card</label>
                     <div class="col-sm-9">
@@ -220,7 +226,7 @@
                 </div> <!-- /.form-group -->
                 <div class="form-group">
                     <div class="col-sm-9 col-sm-offset-3">
-                        <button id='submitButton' type="submit" class="btn btn-primary btn-block">Register</button><br><br><br><br>
+                        <button id='submitButton' class="btn btn-primary btn-block">Register</button><br><br><br><br>
                     </div>
                 </div>
             </form> <!-- /form -->
@@ -234,6 +240,6 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
 
-     <script src="/js/main.js"></script>
+     <script src="/js/signUp.js"></script>
   </body>
 </html>

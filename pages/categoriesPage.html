@@ -8,13 +8,15 @@
         <link href="../css/categoriesPage.css" rel="stylesheet">
     <!-- Latest compiled and minified CSS -->
 
+ <script src="https://code.jquery.com/jquery-1.11.1.js"></script> 
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
 <!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
   </head>
 
 <body>
@@ -33,7 +35,7 @@
         <ul class="dropdown-menu">
           <li><a href="../pages/accountUpdate.html">Update Information</a></li>
           <li><a href="../pages/orderHistoryPage.html">Order History</a></li>
-          <li><a href="#">Wish List</a></li>
+          <li><a href="../pages/wishlist.html">Wish List</a></li>
           <li><a href="../pages/postAuctionItem.html">Post Item for Auction</a></li>
           <li><a href="../pages/postFixedPriceItem.html">Post Fixed Price Item </a></li>
         </ul>
@@ -69,24 +71,24 @@
             <h4 class="panel-title">
               <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
 
-              Apparrel  </a> <div style="display:inline; float:right" >view all</div>
+              Apparrel  </a> <div id='apparrel' class='browse' categories='mens-formal mens-casual mens-sport womens-formal womens-casual womens-sport' style="font-size:13px; display:inline; float:right" >view all</div>
 
             </h4>
           </div>
           <div id="collapse1" class="panel-collapse collapse">
             <div class="panel-body">
                 <div class="list-group">
-                  <a id="men's" class="list-group-item"><ul><strong>Men's</strong></ul></a>
+                  <a id="men's" categories='men-formal men-casual men-sport' class="browse list-group-item"><ul><strong>Men's</strong></ul></a>
                     <div class="list-group">
-                      <a id="men-formal" class="list-group-item">Formal</a>
-                      <a id="men-casual" class="list-group-item">Casual</a>
-                      <a id="men-sport" class="list-group-item">Sport</a>
+                      <a id="men-formal" categories='men-formal' class="browse list-group-item">Formal</a>
+                      <a id="men-casual" categories='men-casual' class="browse list-group-item">Casual</a>
+                      <a id="men-sport" categories='men-sport' class="browse list-group-item">Sport</a>
                     </div>
-                    <a id="women's" class="list-group-item"><ul><strong>Women's</strong></ul></a>
+                    <a id="women's" categories='women-formal women-casual women-sport' class="browse list-group-item"><ul><strong>Women's</strong></ul></a>
                     <div class="list-group">
-                      <a id="women-formal" class="list-group-item">Formal</a>
-                      <a id="women-casual" class="list-group-item">Casual</a>
-                      <a id="women-sport" class="list-group-item">Sport</a>
+                      <a id="women-formal" categories='women-formal' class="browse list-group-item">Formal</a>
+                      <a id="women-casual" categories='women-casual' class="browse list-group-item">Casual</a>
+                      <a id="women-sport" categories='women-sport' class="browse list-group-item">Sport</a>
                     </div>
                 </div>
             </div>
@@ -96,26 +98,26 @@
           <div class="panel-heading">
             <h4 class="panel-title">
               <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-              Electronics</a>
+              Electronics</a><div id='electronics ' class='browse' categories='desktops laptops cameras camcorders television accessories' style="font-size:13px; display:inline; float:right" >view all</div>
             </h4>
           </div>
           <div id="collapse2" class="panel-collapse collapse">
             <div class="panel-body">
               <div class="list-group">
-                  <a id="computer" class="list-group-item"><ul><strong>Computers</strong></ul></a>
+                  <a id="computers" categories='desktops laptops' class="browse list-group-item"><ul><strong>Computers</strong></ul></a>
                     <div class="list-group">
-                      <a id="desktop" class="list-group-item">Desktops</a>
-                      <a id="laptop" class="list-group-item">Laptops</a>
+                      <a id="desktops" categories='desktops' class="browse list-group-item">Desktops</a>
+                      <a id="laptops" categories='laptops' class="browse list-group-item">Laptops</a>
                     </div>
-                  <a id="media" class="list-group-item"><ul><strong>Media</strong></ul></a>
+                  <a id="media" categories='cameras camcorders' class="browse list-group-item"><ul><strong>Media</strong></ul></a>
                     <div class="list-group">
-                      <a id="camera" class="list-group-item">Camera</a>
-                      <a id="camecorder" class="list-group-item">Camcorder</a>
+                      <a id="cameras" categories='cameras' class="browse list-group-item">Cameras</a>
+                      <a id="camcorders" categories='camcorders' class="browse list-group-item">Camcorders</a>
                     </div>
-                  <a id="tv&accessories" class="list-group-item"><ul><strong>TV & Accessories</strong></ul></a>
+                  <a id="tv&accessories" categories='television accessories' class="browse list-group-item"><ul><strong>TV & Accessories</strong></ul></a>
                     <div class="list-group">
-                      <a id="tv" class="list-group-item">Television</a>
-                      <a id="tvaccessories" class="list-group-item">Accessories</a>
+                      <a id="tv" categories='television' class="browse list-group-item">Television</a>
+                      <a id="tvaccessories" categories='accessories' class="browse list-group-item">Accessories</a>
                     </div>
                 </div>
             </div>
@@ -125,27 +127,27 @@
           <div class="panel-heading">
             <h4 class="panel-title">
               <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-              Sports</a>
+              Sports</a><div id='sports' class='browse' categories='bats baseballs mitts balls clubs tees equipment' style="font-size:13px; display:inline; float:right" >view all</div>
             </h4>
           </div>
           <div id="collapse3" class="panel-collapse collapse">
             <div class="panel-body">
               <div class="list-group">
-                  <a id="baseball" class="list-group-item"><ul><strong>Baseball</strong></ul></a>
+                  <a id="baseball" categories='bats baseballs mitts' class="browse list-group-item"><ul><strong>Baseball</strong></ul></a>
                     <div class="list-group">
-                      <a id="bats" class="list-group-item">Bats</a>
-                      <a id="baseballs" class="list-group-item">Baseballs</a>
-                      <a id="mitts" class="list-group-item">Mitts</a>
+                      <a id="bats" categories='bats' class="browse list-group-item">Bats</a>
+                      <a id="baseballs" categories='baseballs' class="browse list-group-item">Baseballs</a>
+                      <a id="mitts" categories='mitts' class="browse list-group-item">Mitts</a>
                     </div>
-                  <a id="golf" class="list-group-item"><ul><strong>Golf</strong></ul></a>
+                  <a id="golf" categories='balls clubs tees' class="browse list-group-item"><ul><strong>Golf</strong></ul></a>
                     <div class="list-group">
-                      <a id="golfballs" class="list-group-item">Golf Balls</a>
-                      <a id="clubs" class="list-group-item">Clubs</a>
-                      <a id="tees" class="list-group-item">Tees</a>
+                      <a id="balls" categories='balls' class="browse list-group-item">Balls</a>
+                      <a id="clubs" categories='clubs' class="browse list-group-item">Clubs</a>
+                      <a id="tees" categories='tees' class="browse list-group-item">Tees</a>
                     </div>
-                  <a id="exercise" class="list-group-item"><ul><strong>Exersise</strong></ul></a>
+                  <a id="exercise" categories='equipment' class="browse list-group-item"><ul><strong>Exercise</strong></ul></a>
                     <div class="list-group">
-                      <a id="equipment" class="list-group-item">Equipment</a>
+                      <a id="equipment" categories='equipment' class="browse list-group-item">Equipment</a>
                     </div>
                 </div>
             </div>
@@ -159,21 +161,21 @@
           <div class="panel-heading">
             <h4 class="panel-title">
               <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
-              Home Improvements</a>
+              Home Improvements</a><div id='homeImprovements' class='browse' categories='acrylic stain brushes' style="font-size:13px; display:inline; float:right" >view all</div>
             </h4>
           </div>
           <div id="collapse4" class="panel-collapse collapse">
             <div class="panel-body">
                 <div class="list-group">
-                  <a id="paint" class="list-group-item"><ul><strong>Paints</strong></ul></a>
+                  <a id="paints" categories='acrylics stain' class="browse list-group-item"><ul><strong>Paints</strong></ul></a>
                     <div class="list-group">
-                      <a id="acrylic" class="list-group-item">Acrylic</a>
-                      <a id="stain" class="list-group-item">Stain</a>
-                      <a id="paintequipment" class="list-group-item">Painting Equipment</a>
+                      <a id="acrylic" categories='acrylics' class="browse list-group-item">Acrylic</a>
+                      <a id="stain" categories='stain' class="browse list-group-item">Stain</a>
+                      <a id="paintequipment" categories='stain' class="browse list-group-item">Painting Equipment</a>
                     </div>
-                    <a id="tools" class="list-group-item"><ul><strong>Tools</strong></ul></a>
+                    <a id="tools" categories='brushes' class="browse list-group-item"><ul><strong>Hardware Tools</strong></ul></a>
                     <div class="list-group">
-                      <a id="hardwaretools" class="list-group-item">Hardware Tools</a>
+                      <a id="tools" categories='brushes' class="browse list-group-item">Tools</a>
                     </div>
                 </div>
             </div>
@@ -183,13 +185,13 @@
           <div class="panel-heading">
             <h4 class="panel-title">
               <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">
-              Home Appliances</a>
+              Home Appliances</a><div id='homeAppliances' class='browse' categories='appliances' style="font-size:13px; display:inline; float:right" >view all</div>
             </h4>
           </div>
           <div id="collapse5" class="panel-collapse collapse">
             <div class="panel-body">
               <div class="list-group">
-                  <a id="appliances" class="list-group-item"><ul><strong>Appliances</strong></ul></a>
+                  <a id="appliances" categories='appliances' class="browse list-group-item browse"><ul><strong>Appliances</strong></ul></a>
               </div>
             </div>
           </div>
@@ -198,13 +200,13 @@
           <div class="panel-heading">
             <h4 class="panel-title">
               <a data-toggle="collapse" data-parent="#accordion" href="#collapse6">
-              Rugs</a>
+              Rugs</a><div id='rugs' class='browse' categories='rugs' style="font-size:13px; display:inline; float:right" >view all</div>
             </h4>
           </div>
           <div id="collapse6" class="panel-collapse collapse">
             <div class="panel-body">
               <div class="list-group">
-                  <a id="rugs" class="list-group-item"><ul><strong>Rugs</strong></ul></a>     
+                  <a id="rugs" categories='rugs' class="browse list-group-item"><ul><strong>Rugs</strong></ul></a>     
               </div>
             </div>
           </div>
@@ -217,22 +219,22 @@
           <div class="panel-heading">
             <h4 class="panel-title">
               <a data-toggle="collapse" data-parent="#accordion" href="#collapse7">
-              Office</a>
+              Office</a><div id='office' class='browse' categories='paper pencils small large chairs' style="font-size:13px; display:inline; float:right" >view all</div>
             </h4>
           </div>
           <div id="collapse7" class="panel-collapse collapse">
             <div class="panel-body">
                 <div class="list-group">
-                  <a id="officesupplies" class="list-group-item"><ul><strong>Office Supplies</strong></ul></a>
+                  <a id="officesupplies" categories='paper pencils' class="browse list-group-item"><ul><strong>Office Supplies</strong></ul></a>
                     <div class="list-group">
-                      <a id="paper" class="list-group-item">Paper</a>
-                      <a id="writingtools" class="list-group-item">Writing Tools</a>
+                      <a id="paper" categories='paper' class="browse list-group-item">Paper</a>
+                      <a id="pencils" categories='pencils' class="browse list-group-item">pencils</a>
                     </div>
-                    <a id="desks" class="list-group-item"><ul><strong>Desks</strong></ul></a>
+                    <a id="desks" categories='small large chairs' class="browse list-group-item"><ul><strong>Desks</strong></ul></a>
                     <div class="list-group">
-                      <a id="smalldesk" class="list-group-item">Small Desks</a>
-                      <a id="largedesks" class="list-group-item">Large Desks</a>
-                      <a id="chair" class="list-group-item">Office Chair</a>
+                      <a id="smalldesk" categories='small' class="browse list-group-item">Small</a>
+                      <a id="largedesks" categories='large' class="browse list-group-item">Large</a>
+                      <a id="chair" categories='chairs' class="browse list-group-item">Chairs</a>
                     </div>
                 </div>
             </div>
@@ -242,52 +244,26 @@
           <div class="panel-heading">
             <h4 class="panel-title">
               <a data-toggle="collapse" data-parent="#accordion" href="#collapse8">
-              Kitchen</a>
+              Kitchen</a><div id='kitchen' class='browse' categories='meat vegetables microwave forks knives spoons' style="font-size:13px; display:inline; float:right" >view all</div>
             </h4>
           </div>
           <div id="collapse8" class="panel-collapse collapse">
             <div class="panel-body">
               <div class="list-group">
-                  <a id="raw" class="list-group-item"><ul><strong>Raw</strong></ul></a>
+                  <a id="raw" categories='meat vegetables' class="browse list-group-item"><ul><strong>Raw</strong></ul></a>
                     <div class="list-group">
-                      <a id="meat" class="list-group-item">Meat</a>
-                      <a id="vegetables" class="list-group-item">Vegetables</a>
+                      <a id="meat" categories='meat' class="browse list-group-item">Meat</a>
+                      <a id="vegetables" categories='vegetables' class="browse list-group-item">Vegetables</a>
                     </div>
-                  <a id="quickmeals" class="list-group-item"><ul><strong>Quick Meals</strong></ul></a>
+                  <a id="quickmeals" categories='microwave' class="browse list-group-item"><ul><strong>Quick Meals</strong></ul></a>
                     <div class="list-group">
-                      <a id="microwavemeals" class="list-group-item">Microwave Meals</a>
+                      <a id="microwavemeals" categories='microwave' class="browse list-group-item">Microwave</a>
                     </div>
-                  <a id="cutlery" class="list-group-item"><ul><strong>Cutlery</strong></ul></a>
+                  <a id="cutlery" categories='forks knives spoons' class="browse list-group-item"><ul><strong>Cutlery</strong></ul></a>
                     <div class="list-group">
-                      <a id="forks" class="list-group-item">Forks</a>
-                      <a id="knives" class="list-group-item">Knives</a>
-                      <a id="spoons" class="list-group-item">Spoons</a>
-                    </div>
-                </div>
-            </div>
-          </div>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapse9">
-              Books</a>
-            </h4>
-          </div>
-          <div id="collapse9" class="panel-collapse collapse">
-            <div class="panel-body">
-              <div class="list-group">
-                  <a id="hardcover" class="list-group-item"><ul><strong>Hardcover</strong></ul></a>
-                    <div class="list-group">
-                      <a id="hardcover-textbook" class="list-group-item">Textbooks</a>
-                      <a id="hardcover-nonfiction" class="list-group-item">Non-Fiction</a>
-                      <a id="hardcover-fiction" class="list-group-item">Fiction</a>
-                    </div>
-                  <a id="paperback" class="list-group-item"><ul><strong>Paperback</strong></ul></a>
-                    <div class="list-group">
-                      <a id="paperback-textbook" class="list-group-item">Textbooks</a>
-                      <a id="paperback-nonfiction" class="list-group-item">Non-Fiction</a>
-                      <a id="paperback-fiction" class="list-group-item">Fiction</a>
+                      <a id="forks" categories='forks' class="browse list-group-item">Forks</a>
+                      <a id="knives" categories='knives' class="browse list-group-item">Knives</a>
+                      <a id="spoons" categories='spoons' class="browse list-group-item">Spoons</a>
                     </div>
                 </div>
             </div>
@@ -295,11 +271,10 @@
         </div>
       </div>
     </div>
-  </div>      
+  </div> 
+  <ul id='resultList' class='list-group'></ul>     
       <br>
-      <footer>
-        <p>&copy; Himalaya.com</p>
-      </footer>
+
 </div> <!-- /container -->
 
  <script src="https://code.jquery.com/jquery-1.11.1.js"></script> 
@@ -308,7 +283,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script> 
 
-    <script src="/js/main.js"></script>
+    <script src="/js/categoriesPage.js"></script>
 
 </body>
 </html>

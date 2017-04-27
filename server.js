@@ -93,12 +93,11 @@ setInterval(function(){
           // //  schemas.user.update({username: doc[i].bids[j].username}, {age:28});
 
 
-          //       docs.save(function (err) {
-          //        if (err){
-          //         console.log('error notification');
-          //       }
-          //        console.log('Success! notification');
-          //       });
+
+//}
+
+
+
 
              // });
             j++;
@@ -299,20 +298,23 @@ io.on('connection', function(socket) {
    socket.on('authenticate', function(msg) {
     console.log(msg.username);
       schemas.user.findOne({username:msg.username},function(err, doc){
-        console.log('got a user');
-        if(doc.password == msg.password){
-          var sessionString=generateID();
-          doc.session_string=sessionString;
+        console.log('doc');
+        if (doc) {
+    
+          if(doc.password == msg.password){
+            var sessionString=generateID();
+            doc.session_string=sessionString;
 
-          var timeout = Date.now()+1000*60*5;
-          //timeout.setMinutes(timeout.getMinutes() + 5);
+            var timeout = Date.now()+1000*60*5;
+            //timeout.setMinutes(timeout.getMinutes() + 5);
 
-          doc.session_date=timeout;
-          doc.save();
+            doc.session_date=timeout;
+            doc.save();
 
-          console.log("sending authentication data");
-          io.emit('authentication data', sessionString);
+            console.log("sending authentication data");
+            io.emit('authentication data', sessionString);
 
+          }
         }
 
       });
@@ -432,6 +434,12 @@ io.on('connection', function(socket) {
       });
 
    });
+  socket.on('search categories', function(msg) {
+    schemas.saleItem.find({"category": { $in : msg }},function(err, doc){
+        io.emit('category results', doc);
+      });
+  });
+   
   socket.on('button clicked', function(msg) {
 
     io.emit('button was clicked', msg);

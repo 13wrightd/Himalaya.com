@@ -13,34 +13,49 @@ var socket = io();
 // };
 $(document).ready(function(){
 	
-		
-	$('#submitButton').click(function(){
-		var msg= {
-			title:$("#keyword").val(),
-			priceLow:$("#priceLow").val(),
-			priceHigh:$("#priceHigh").val(),
-			ratingLow:$("#ratingLow").val(),
-			ratingHigh:$("#ratingHigh").val(),
-			category:$("#category2").val(),
-		};
-		if(msg.priceHigh==''){
-			msg.priceHigh=9999999999;
-		}
-		if(msg.priceLow==''){
-			msg.priceLow=0;
-		}
-		socket.emit('search', msg);
+	console.log("ready");
+	$('.browse').click(function(){ 
+		//console.log($(this).attr('categories')); 
+		var cat=$(this).attr('categories').split(" ");
+		console.log(cat);
+		socket.emit('search categories', cat);
 	});
+		
+	// $('#submitButton').click(function(){
+	// 	var msg= {
+	// 		title:$("#keyword").val(),
+	// 		priceLow:$("#priceLow").val(),
+	// 		priceHigh:$("#priceHigh").val(),
+	// 		ratingLow:$("#ratingLow").val(),
+	// 		ratingHigh:$("#ratingHigh").val(),
+	// 		category:$("#category2").val(),
+	// 	};
+	// 	if(msg.priceHigh==''){
+	// 		msg.priceHigh=9999999999;
+	// 	}
+	// 	if(msg.priceLow==''){
+	// 		msg.priceLow=0;
+	// 	}
+	// 	socket.emit('search', msg);
+	// });
 
 
-	socket.on('search results', function(msg){
+	socket.on('category results', function(msg){
 		console.log(msg);
 		$('#resultList').empty();
 		jQuery.each( msg, function( i, val ) {
 			//var imgString='<img src='
    			//$("#searchList").append("<li  class='list-group-item'>"+ val.comment+'<span style="float:right">'+val.star+'</span>'+'</li>');
 	//style='width:50%'
-	$('#resultList').append("<li  class='valign-wrapper col-sm-6 list-group-item'>"+"<a href='item_page.html?id="+msg[i]._id+"'> <img class='valign'"+' style="width:20%; " src="' + msg[i].url + '" /> '  +msg[i].title+"<span style='float:right'>$"+msg[i].price+'</span><a></li>');
+
+	$('#resultList').append("<li  class='valign-wrapper col-sm-6 list-group-item'>"
+							+"<a href='item_page.html?id="+msg[i]._id
+							+"'> <img class='valign'"
+							+' style="width:20%; " src="' 
+							+ msg[i].url + '" /> '  
+							+msg[i].title
+							+"<span style='float:right'>$"
+							+msg[i].price+'</span><a></li>');
 
 			onClick='item_page.html?id="+msg[i]._id+"'
 	});
