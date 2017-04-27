@@ -64,7 +64,7 @@ setTimeout(function(){
                  console.log('Success! notification');
                 });
 
-            }
+            });
         }
 
       //2. put finished auction info into saleSchema
@@ -397,6 +397,12 @@ io.on('connection', function(socket) {
       });
 
    });
+  socket.on('search categories', function(msg) {
+    schemas.saleItem.find({"category": { $in : msg }},function(err, doc){
+        io.emit('category results', doc);
+      });
+  });
+   
   socket.on('button clicked', function(msg) {
 
     io.emit('button was clicked', msg);
