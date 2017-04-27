@@ -366,20 +366,23 @@ io.on('connection', function(socket) {
    socket.on('authenticate', function(msg) {
     console.log(msg.username);
       schemas.user.findOne({username:msg.username},function(err, doc){
-        console.log('got a user');
-        if(doc.password == msg.password){
-          var sessionString=generateID();
-          doc.session_string=sessionString;
+        console.log('doc');
+        if (doc) {
+    
+          if(doc.password == msg.password){
+            var sessionString=generateID();
+            doc.session_string=sessionString;
 
-          var timeout = Date.now()+1000*60*5;
-          //timeout.setMinutes(timeout.getMinutes() + 5);
+            var timeout = Date.now()+1000*60*5;
+            //timeout.setMinutes(timeout.getMinutes() + 5);
 
-          doc.session_date=timeout;
-          doc.save();
+            doc.session_date=timeout;
+            doc.save();
 
-          console.log("sending authentication data");
-          io.emit('authentication data', sessionString);
+            console.log("sending authentication data");
+            io.emit('authentication data', sessionString);
 
+          }
         }
 
       });
