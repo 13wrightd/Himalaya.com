@@ -1,4 +1,14 @@
+footer{
+	position: absolute;
+	bottom:0px;
+	width:100%;
+	float: top;
+}
 
+button{
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
 
 html {
    
@@ -29,15 +39,12 @@ body {
 .jumbotron {
 	background-image: url("/images/HimalayanMountains.jpg")
 }
-
+/*
 h3, p{
-	/*padding-left:80px;*/
+	padding-left:80px;
 	padding-right: 400px;
 }
-
-{
-	padding-left: 70px;
-}
+*/
 
 .absolute {
 	position: absolute;
