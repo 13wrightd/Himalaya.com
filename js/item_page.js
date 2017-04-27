@@ -27,6 +27,11 @@ $(document).ready(function(){
 		setTimeout(function(){
 			socket.emit('get item', Url.get.id);
 		},500);
+	$('#wishButton').click(function(){
+		var msg= {
+			
+		}
+	});
 
 	});
 	$('#buyButton').click(function(){
