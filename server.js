@@ -372,6 +372,7 @@ io.on('connection', function(socket) {
           price: msg.fixedPrice,
           category: msg.itemCategory,
           quantity: 50,
+          seller: msg.username,
           url: msg.itemPictureURL,
           address:{
             street: '',
